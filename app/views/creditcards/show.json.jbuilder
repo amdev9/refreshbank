@@ -1,0 +1,1 @@
+json.extract! @creditcard, :id, :banktype, :creditlimit, :currency, :bank, :categorycard, :freeperiod, :moneyusage, :bonus, :payapprove, :stavka, :minimalpay, :interestbalance, :cashback, :freemade, :freeservice, :freesms, :created_at, :updated_at

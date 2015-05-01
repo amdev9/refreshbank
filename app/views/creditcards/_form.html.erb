@@ -1,0 +1,99 @@
+<%= form_for(@creditcard) do |f| %>
+  <% if @creditcard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@creditcard.errors.count, "error") %> prohibited this creditcard from being saved:</h2>
+
+      <ul>
+      <% @creditcard.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :banktype %><br>
+    <%= f.text_field :banktype %>
+  </div>
+  <div class="field">
+    <%= f.label :creditlimit %><br>
+    <%= f.number_field :creditlimit %>
+  </div>
+  <div class="field">
+    <%= f.label :currency %><br>
+    <%= f.text_field :currency %>
+  </div>
+  <div class="field">
+    <%= f.label :bank %><br>
+    <%= f.text_field :bank %>
+  </div>
+  <div class="field">
+    <%= f.label :categorycard %><br>
+    <%= f.text_field :categorycard %>
+  </div>
+  <div class="field">
+    <%= f.label :freeperiod %><br>
+    <%= f.text_field :freeperiod %>
+  </div>
+  <div class="field">
+    <%= f.label :moneyusage %><br>
+    <%= f.text_field :moneyusage %>
+  </div>
+  <div class="field">
+    <%= f.label :bonus %><br>
+    <%= f.text_field :bonus %>
+  </div>
+  <div class="field">
+    <%= f.label :payapprove %><br>
+    <%= f.text_field :payapprove %>
+  </div>
+  <div class="field">
+    <%= f.label :stavka %><br>
+    <%= f.number_field :stavka %>
+  </div>
+  <div class="field">
+    <%= f.label :minimalpay %><br>
+    <%= f.number_field :minimalpay %>
+  </div>
+  <div class="field">
+    <%= f.label :interestbalance %><br>
+    <%= f.check_box :interestbalance %>
+  </div>
+  <div class="field">
+    <%= f.label :cashback %><br>
+    <%= f.check_box :cashback %>
+  </div>
+  <div class="field">
+    <%= f.label :freemade %><br>
+    <%= f.check_box :freemade %>
+  </div>
+  <div class="field">
+    <%= f.label :freeservice %><br>
+    <%= f.check_box :freeservice %>
+  </div>
+  <div class="field">
+    <%= f.label :freesms %><br>
+    <%= f.check_box :freesms %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+
+
+<div class="field">
+    <%= f.label :awaylink %><br>
+    <%= f.text_field :awaylink %>
+  </div>
+
+    <div class="field">
+    <%= f.label :approveflag %><br>
+    <%= f.text_field :approveflag %>
+  </div>
+
+   
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

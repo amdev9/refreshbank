@@ -1,0 +1,289 @@
+<body id="product-detail-page">
+
+
+<!-- <p id="notice"><%= notice %></p>
+ -->
+
+
+ <header class="navbar navbar-default navbar-static-top" role="banner">
+ 
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <img title="RefreshBank" src="/img/logo2.svg" alt="Logo powered">
+</a>    </div>
+
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Кредитные карты', creditcards_path %></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+       
+<li><a href="http://www.refreshbank.ru">Регистрация</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+     
+
+ 
+<div id="content-wrapper">
+      
+  <div class="head">
+   <img class="product-logo" src="<%= @creditcard.image_full %>">
+
+  <h1>
+  <%= @creditcard.banktype %>
+ 
+ <small><small>от </small> <%= @creditcard.bank %></small>
+
+
+
+
+  </h1>
+  <p>
+<%= link_to '<< Все кредитные карты', creditcards_path %>
+</p>
+ 
+</div>
+
+
+<div class="details-on-the-side">
+    <table>
+      <tbody><tr>
+        <td>Банк</td>
+        <td><%= @creditcard.bank %></td>
+      </tr>
+      <tr>
+        <td>Категория карты</td>
+        <td><%= @creditcard.categorycard %></td>
+      </tr>
+      <tr>
+        <td>Использование sobstv средств</td>
+        <td><%= @creditcard.moneyusage %></td>
+      </tr>
+     <!--  <tr>
+        <td>Бонусы</td>
+        <td><%= @creditcard.bonus %></td>
+      </tr>
+      <tr>
+        <td>Подтверждение дохода</td>
+        <td> <%= @creditcard.payapprove %></td>
+      </tr> -->
+        <td>Проценты на остаток</td>
+        <td><% if @creditcard.interestbalance  %> Да
+        <% else %>Нет
+        <%end%>
+</tr>
+<tr>
+        <td>Cash Back</td>
+        <td> 
+<% if @creditcard.cashback  %> Да
+        <% else %>Нет
+        <%end%>
+
+
+
+        </td>
+      </tr>
+            <tr>
+        <td>Бесплатный выпуск карты</td>
+        <td><% if @creditcard.freemade  %> Да
+        <% else %>Нет
+        <%end%>
+
+
+        </td>
+      </tr>
+        <tr>
+        <td>Бесплатное обслуживание</td>
+        <td>
+       
+<% if @creditcard.freeservice   %> Да
+        <% else %>Нет
+        <%end%>
+
+        </td>
+      </tr>
+
+  <tr>
+        <td>Бесплатные СМС</td>
+        <td>
+       <% if @creditcard.freesms  %> Нет
+        <% else %>Да
+        <%end%>
+
+        </td>
+      </tr>
+
+    </tbody></table>
+
+     
+  </div>
+
+<div class="left-content">
+    <table class="main-details-grid">
+      <colgroup>
+        <col span="1" style="width: 33.33333%">
+        <col span="1" style="width: 33.33333%">
+        <col span="1" style="width: 33.33333%">
+      </colgroup>
+      <tbody><tr>
+        <td>
+          <em><%= @creditcard.freeperiod %> дней</em>
+          Льготный период
+        </td>
+        
+        <td>
+
+          <em><%= @creditcard.minimalpay %> <small> <%= @creditcard.currency %> </small></em>
+          Минимальный платеж
+        </td>
+      </tr>
+      <tr>
+       <td>
+          <em><%= @creditcard.stavka %></em>
+         Ставка
+        </td>
+        <td>
+          <em>  <%= @creditcard.creditlimit %> <small>  <%= @creditcard.currency %> </small></em>
+          Кредитный лимит
+        </td>
+        <td class="monthly-payments" style="display: none">
+          <em><span class="monthly-payments-holder">0</span> <small>AED</small></em>
+          Est. Monthly payments
+        </td>
+      </tr>
+    </tbody></table>
+    
+
+    <h3>Особенности</h3>
+    <p></p><p><span style="line-height: 20.7999992370605px;"><%= @creditcard.description %>&nbsp;   </span></p><p></p>
+  </div>
+
+<div id="request-callback">
+            
+                <div class="wrap">
+    
+        
+            <form method="get" class="request-callback-form" action="#request-callback">
+                <input class="massive-button" type="submit" name="show_form" value="Оформить заявку" style="width:100%">
+            </form>
+        
+    
+</div>
+
+     
+
+            
+        </div>
+
+<!-- 
+<p>
+  <strong>Кредитный лимит:</strong>
+  <%= @creditcard.creditlimit %>
+</p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @creditcard.currency %>
+</p>
+
+
+
+<p>
+  <strong>Categorycard:</strong>
+  <%= @creditcard.categorycard %>
+</p>
+
+<p>
+  <strong>Freeperiod:</strong>
+  <%= @creditcard.freeperiod %>
+</p>
+
+<p>
+  <strong>Moneyusage:</strong>
+  <%= @creditcard.moneyusage %>
+</p>
+
+<p>
+  <strong>Bonus:</strong>
+  <%= @creditcard.bonus %>
+</p>
+
+<p>
+  <strong>Payapprove:</strong>
+  <%= @creditcard.payapprove %>
+</p>
+
+<p>
+  <strong>Stavka:</strong>
+  <%= @creditcard.stavka %>
+</p>
+
+<p>
+  <strong>Minimalpay:</strong>
+  <%= @creditcard.minimalpay %>
+</p>
+
+<p>
+  <strong>Interestbalance:</strong>
+  <%= @creditcard.interestbalance %>
+</p>
+
+<p>
+  <strong>Cashback:</strong>
+  <%= @creditcard.cashback %>
+</p>
+
+<p>
+  <strong>Freemade:</strong>
+  <%= @creditcard.freemade %>
+</p>
+
+<p>
+  <strong>Freeservice:</strong>
+  <%= @creditcard.freeservice %>
+</p>
+
+<p>
+  <strong>Freesms:</strong>
+  <%= @creditcard.freesms %>
+</p>
+
+
+<p>
+  <strong>Desctiption:</strong>
+  <%= @creditcard.description %>
+</p>
+
+<p>
+  <strong>desc:</strong>
+  <%= @creditcard.description %>
+</p>
+
+
+<p>
+  <strong>approveflag:</strong>
+  <%= @creditcard.approveflag %>
+</p>
+
+<p>
+  <strong>Awaylink:</strong>
+  <%= @creditcard.awaylink %>
+</p>
+ -->
+
+</div>
+<%= link_to 'Edit', edit_creditcard_path(@creditcard) %> 
+
+
+</body>
+
