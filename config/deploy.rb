@@ -1,9 +1,11 @@
 # config valid only for current version of Capistrano
 	lock '3.4.0'
 
-require "bundler/capistrano"
+require "capistrano-rbenv"
+set :rbenv_ruby_version, "ruby 2.2.2p95"
+# require "bundler/capistrano"
  
-server "176.58.116.29", :web, :app, :db, primary: true
+server "176.58.116.29", roles: [:web, :app, :db], primary: true
  
 set :application, 'refresh'
 set :repo_url, 'git@bitbucket.org:ratm92/refresh.git'
@@ -79,7 +81,7 @@ namespace :deploy do
   end
 
   before :starting,     :check_revision
-  after  :finishing,    :compile_assets
+  # after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
 end

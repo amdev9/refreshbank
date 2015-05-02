@@ -56,10 +56,11 @@ end
 # group :production do
 gem "puma"
 
-gem 'capistrano',  '~> 3.1'
-gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano' 
+gem 'capistrano-rails' 
 gem 'capistrano3-puma'
 gem 'capistrano-bundler' 
+gem 'capistrano-rbenv'
 
 # end
  
