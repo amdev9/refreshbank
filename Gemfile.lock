@@ -190,6 +190,7 @@ DEPENDENCIES
   babosa
   byebug
   capistrano (~> 3.1)
+  capistrano-bundler
   capistrano-rails (~> 1.1)
   capistrano3-puma
   coffee-rails (~> 4.1.0)
