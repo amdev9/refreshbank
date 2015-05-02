@@ -53,6 +53,13 @@ group :development, :test do
 end
 
 
-gem "rails_12factor", group: :production
+# group :production do
 gem "puma"
-ruby "2.2.1"
+
+gem 'capistrano',  '~> 3.1'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano3-puma'
+
+
+# end
+ 
