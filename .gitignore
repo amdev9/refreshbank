@@ -17,7 +17,4 @@
 /tmp
 /Procfile
 /shared/
-/config/deploy/
-/config/database.yml
-
-
+/config/deploy/ 
