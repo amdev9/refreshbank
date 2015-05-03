@@ -18,3 +18,4 @@
 /Procfile
 /shared/
 /config/deploy/
+/config/database.yml
