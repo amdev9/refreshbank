@@ -2,7 +2,7 @@
 	lock '3.4.0'
 
 require "capistrano-rbenv"
-set :rbenv_ruby_version, "ruby 2.2.2p95"
+set :rbenv_ruby, "2.2.2"
 # require "bundler/capistrano"
  
 server "176.58.116.29", roles: [:web, :app, :db], primary: true
