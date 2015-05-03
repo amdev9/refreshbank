@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: creditkart_production
-  username: alex 
-  password: <%= ENV['alex_DATABASE_PASSWORD'] %>
+  username: deployer 
+  password: <%= ENV['deployer_DATABASE_PASSWORD'] %>
