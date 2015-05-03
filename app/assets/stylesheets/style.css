@@ -438,7 +438,7 @@ text-decoration: underline;
     position: relative;
     top: -1px; }
   #products-page #filters .filter {
-    width: 300px;
+    width: 200px;
     margin-right: 20px;
     margin-top: 10px;
     float: left; 
@@ -558,7 +558,9 @@ text-decoration: underline;
 
    #products-page #products .product-table th, #products-page #products .product-table td {
       padding-left: 30px  ;
-      text-align: left; }
+      text-align: left; 
+      
+    }
     }
 
 
