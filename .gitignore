@@ -17,4 +17,5 @@
 /tmp
 /Procfile
 /shared/
-/config/deploy/ 
+/config/deploy/
+
