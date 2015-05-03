@@ -447,7 +447,7 @@ text-decoration: underline;
       margin-right: 0; }
     #products-page #filters .filter label {
       display: inline-block;
-      font-weight: normal;
+      font-weight: 600;
       margin: 0 0 5px 0; }
     #products-page #filters .filter select {
       -moz-appearance: none;
