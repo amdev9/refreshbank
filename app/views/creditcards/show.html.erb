@@ -1,3 +1,10 @@
+ 
+<% content_for :titles do %>
+
+ <title>Кредитная карта <%= @creditcard.banktype %> в <%= @creditcard.bank %> | RefreshBank</title>
+
+ <%end%>
+
 <body id="product-detail-page">
 
 
@@ -22,11 +29,13 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li><%= link_to 'Кредитные карты', creditcards_path %></li>
+        
+        <li><%= link_to 'Микрокредиты и займы', microcredits_path %></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
        
-<li><a href="http://www.refreshbank.ru">Регистрация</a></li>
+<li><a href="/">Регистрация</a></li>
       </ul>
     </nav>
   </div>
@@ -55,6 +64,44 @@
 </div>
 
 
+<div class="left-content">
+    <table class="main-details-grid">
+      <colgroup>
+        <col span="1" style="width: 33.33333%">
+        <col span="1" style="width: 33.33333%">
+        <col span="1" style="width: 33.33333%">
+      </colgroup>
+      <tbody><tr>
+        <td>
+          <em>до <%= @creditcard.freeperiod %> дней</em>
+          Льготный период
+        </td>
+        
+        <td>
+
+          <em><%= @creditcard.minimalpay %>% <small> <%= @creditcard.currency %> </small></em>
+          Минимальный платеж
+        </td>
+      </tr>
+      <tr>
+       <td>
+          <em><%= @creditcard.stavka %>%</em>
+         Ставка
+        </td>
+        <td>
+          <em>  <%= @creditcard.creditlimit %> РУБ<small>  <%= @creditcard.currency %> </small></em>
+          Кредитный лимит
+        </td>
+        <td class="monthly-payments" style="display: none">
+          <em><span class="monthly-payments-holder">0</span> <small>AED</small></em>
+          Est. Monthly payments
+        </td>
+      </tr>
+    </tbody></table>
+    </div>
+
+
+
 <div class="details-on-the-side">
     <table>
       <tbody><tr>
@@ -66,7 +113,7 @@
         <td><%= @creditcard.categorycard %></td>
       </tr>
       <tr>
-        <td>Использование sobstv средств</td>
+        <td>Использование собственных средств</td>
         <td><%= @creditcard.moneyusage %></td>
       </tr>
      <!--  <tr>
@@ -127,47 +174,19 @@
 
      
   </div>
-
 <div class="left-content">
-    <table class="main-details-grid">
-      <colgroup>
-        <col span="1" style="width: 33.33333%">
-        <col span="1" style="width: 33.33333%">
-        <col span="1" style="width: 33.33333%">
-      </colgroup>
-      <tbody><tr>
-        <td>
-          <em><%= @creditcard.freeperiod %> дней</em>
-          Льготный период
-        </td>
-        
-        <td>
-
-          <em><%= @creditcard.minimalpay %> <small> <%= @creditcard.currency %> </small></em>
-          Минимальный платеж
-        </td>
-      </tr>
-      <tr>
-       <td>
-          <em><%= @creditcard.stavka %></em>
-         Ставка
-        </td>
-        <td>
-          <em>  <%= @creditcard.creditlimit %> <small>  <%= @creditcard.currency %> </small></em>
-          Кредитный лимит
-        </td>
-        <td class="monthly-payments" style="display: none">
-          <em><span class="monthly-payments-holder">0</span> <small>AED</small></em>
-          Est. Monthly payments
-        </td>
-      </tr>
-    </tbody></table>
-    
-
     <h3>Особенности</h3>
-    <p></p><p><span style="line-height: 20.7999992370605px;"><%= @creditcard.description %>&nbsp;   </span></p><p></p>
-  </div>
+    <p></p>
 
+    <%= raw @creditcard.description %>
+
+   
+
+
+
+
+    <p></p>
+   </div>
 <div id="request-callback">
             
                 <div class="wrap">
@@ -282,8 +301,9 @@
  -->
 
 </div>
+ 
 <%= link_to 'Edit', edit_creditcard_path(@creditcard) %> 
-
+ 
 
 </body>
 

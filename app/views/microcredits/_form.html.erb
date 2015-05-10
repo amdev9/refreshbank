@@ -1,0 +1,89 @@
+<%= form_for(@microcredit) do |f| %>
+  <% if @microcredit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@microcredit.errors.count, "error") %> prohibited this microcredit from being saved:</h2>
+
+      <ul>
+      <% @microcredit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :microtype %><br>
+    <%= f.text_field :microtype %>
+  </div>
+  <div class="field">
+    <%= f.label :minstavka %><br>
+    <%= f.text_field :minstavka %>
+  </div>
+  <div class="field">
+    <%= f.label :maxsum %><br>
+    <%= f.text_field :maxsum %>
+  </div>
+  <div class="field">
+    <%= f.label :maxsrok %><br>
+    <%= f.text_field :maxsrok %>
+  </div>
+  <div class="field">
+    <%= f.label :pogawenie %><br>
+    <%= f.text_field :pogawenie %>
+  </div>
+  <div class="field">
+    <%= f.label :goal %><br>
+    <%= f.text_field :goal %>
+  </div>
+  <div class="field">
+    <%= f.label :obespechenie %><br>
+    <%= f.text_field :obespechenie %>
+  </div>
+  <div class="field">
+    <%= f.label :zaemcategory %><br>
+    <%= f.text_field :zaemcategory %>
+  </div>
+  <div class="field">
+    <%= f.label :vozrast %><br>
+    <%= f.text_field :vozrast %>
+  </div>
+  <div class="field">
+    <%= f.label :registration %><br>
+    <%= f.text_field :registration %>
+  </div>
+  <div class="field">
+    <%= f.label :documents %><br>
+    <%= f.text_field :documents %>
+  </div>
+  <div class="field">
+    <%= f.label :srokvid %><br>
+    <%= f.text_field :srokvid %>
+  </div>
+  <div class="field">
+    <%= f.label :oformlen %><br>
+    <%= f.text_field :oformlen %>
+  </div>
+  <div class="field">
+    <%= f.label :formavid %><br>
+    <%= f.text_field :formavid %>
+  </div>
+  <div class="field">
+    <%= f.label :poryadpogaw %><br>
+    <%= f.text_field :poryadpogaw %>
+  </div>
+  <div class="field">
+    <%= f.label :dosrpogaw %><br>
+    <%= f.text_field :dosrpogaw %>
+  </div>
+  <div class="field">
+    <%= f.label :paymethod %><br>
+    <%= f.text_field :paymethod %>
+  </div>
+  <div class="field">
+    <%= f.label :site %><br>
+    <%= f.text_field :site %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

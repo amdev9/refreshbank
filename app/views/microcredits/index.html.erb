@@ -1,0 +1,251 @@
+ 
+<% content_for :titles do %>
+
+ <title>Поиск микрокредитов и займов онлайн | RefreshBank</title>
+
+ <%end%>
+
+<body id="products-page">
+
+
+
+ 
+
+<!-- <p id="notice"><%= notice %></p>
+ -->
+
+ <header class="navbar navbar-default navbar-static-top" role="banner">
+ 
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <img title="RefreshBank" src="/img/logo2.svg" alt="Logo powered">
+</a>    </div>
+
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+      
+
+    <!--     <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Screencasts <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a target="blank" href="https://itunes.apple.com/us/podcast/gorails-screencasts/id959332262">Subscribe With iTunes</a></li>
+            <li><a target="blank" href="http://feeds.feedburner.com/gorails">Subscribe With RSS</a></li>
+            <li class="divider">
+            </li><li><a href="/episodes">See All Episodes</a></li>
+          </ul>
+        </li> -->
+        <li><%= link_to 'Кредитные карты', creditcards_path %></li>
+        <li><%= link_to 'Микрокредиты и займы', microcredits_path %></li>
+      
+      
+          <!-- <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guides <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="/guides/hourly-production-server-database-and-file-backups">Hourly Production Server Database And File Backups</a></li>
+                <li><a href="/guides/rotating-rails-production-logs-with-logrotate">Rotating Rails Production Logs with LogRotate</a></li>
+                <li><a href="/guides/setting-up-rails-4-with-mongodb-and-mongoid">Setting Up Rails 4 with MongoDB and Mongoid</a></li>
+                <li><a href="/guides/using-vagrant-for-rails-development">Using Vagrant for Rails Development</a></li>
+            </ul>
+          </li> -->
+
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+       
+<li><a href="/">Регистрация</a></li>
+
+
+        <!--   <li><a href="/users/sign_up">Регистрация</a></li>
+          <li><a href="/users/sign_in">Вход</a></li> -->
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<div id="content-wrapper">
+      
+  <div class="head">
+   <h1>Поиск микрокредитов и займов</h1>
+ </div>
+
+ 
+<div id="filters">
+
+    <h2>Расширенный поиск &nbsp;&nbsp;<span class="results-count-holder">114</span><span class="results-updated-indicator">результаты обновлены</span></h2>
+ 
+    <div class="filter">
+      <label>Организации:</label><br>
+     <%= select_tag 'microcreditorg', options_for_select(Microcredit.select(:microcreditorg).collect{ |u| [u.microcreditorg, u.microcreditorg.gsub(/\s+/, "")] }.uniq) ,prompt: "Все" %>
+    </div>  
+
+
+    <div class="filter">
+      <label>Порядок погашения:</label><br>
+     <%= select_tag 'pogawenie', options_for_select(Microcredit.select(:pogawenie).collect{ |u| [u.pogawenie, u.pogawenie.gsub(/\s+/, "").gsub(/,/, "")] }.uniq) ,prompt: "Неважно" %>
+    </div>  
+
+
+ <!--  
+    <div class="knobs">
+      <label><input type="checkbox" name="interestbalance"> Проценты на остаток</label>
+ 
+      &nbsp; &nbsp; &nbsp;
+      
+       <label><input type="checkbox" name="cashback"> Cash Back</label>
+ </div> -->
+
+
+
+     
+<br><br><br><br>
+
+ 
+<p class="reset-filters">сброс фильтров</p>
+
+</div>
+
+<div id="products">
+    <table  id="miyazaki" class="product-table sortable" border="0">
+      <colgroup>
+        <col span="1" style="width: 300px">
+      </colgroup>
+  <thead>
+    <tr>
+       
+     <th class="sorttable_alpha " rel="tooltip" title="Название займа и микрофинансовой организации">Название & Организация</th>
+      <th class="sorttable_alpha " rel="tooltip" title="Сортирока по минимальная ставке в день">Миним. ставка,<br> в день</th>
+      <th class="{sorter: 'digit'}" rel="tooltip" title="Нажмите для сортировки по максимальной сумме">Макс. сумма,<br> РУБ</th>
+      <th  class="{sorter: 'digit'}" rel="tooltip" title="Сортировка по максимальному сроку">Макс. срок,<br> дни</th>
+     <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @microcredits.each do |microcredit| %>
+      <tr
+            microcreditorg ="<%= microcredit.microcreditorg.gsub(/\s+/, "")    %>" pogawenie ="<%= microcredit.pogawenie.gsub(/\s+/, "").gsub(/,/, "")    %>" 
+
+          >
+        <td>
+              
+
+        <span class="wrap">
+                <img class="bank-logo" src="<%= microcredit.image %>">
+                <%= link_to(microcredit) do %>
+                 <span class="title"><%= microcredit.microtype %></span></a>
+              </span>
+
+
+              <small><%= microcredit.microcreditorg %> </small>
+              <% end %>
+</td>
+    
+        <td><%= microcredit.minstavka.gsub(/,/, ".") %></td>
+        <td><%= microcredit.maxsum.gsub(/\s+/, "")%></td>
+        <td><%= microcredit.maxsrok.gsub(/\D/, "") %></td>
+      <!--   <td><%= microcredit.pogawenie %></td>
+        <td><%= microcredit.goal %></td>
+        <td><%= microcredit.obespechenie %></td>
+        <td><%= microcredit.zaemcategory %></td>
+        <td><%= microcredit.vozrast %></td>
+        <td><%= microcredit.registration %></td>
+        <td><%= microcredit.documents %></td>
+        <td><%= microcredit.srokvid %></td>
+        <td><%= microcredit.oformlen %></td>
+        <td><%= microcredit.formavid %></td>
+        <td><%= microcredit.poryadpogaw %></td>
+        <td><%= microcredit.dosrpogaw %></td>
+        <td><%= microcredit.paymethod %></td>
+        <td><%= microcredit.site %></td> -->
+
+        <td class="apply">
+
+          <%= link_to 'Подробнее', microcredit, class: "btn btn-success btn-block" %>
+
+   
+        </td>
+      </tr>
+        
+
+    <% end %>
+  </tbody>
+</table>
+<div class="no-results-found" style="display: block;">Мы не смогли найти микрокредит, который удовлетворяет вашим условиям :(</div>
+
+<script> 
+var headertext = [],
+headers = document.querySelectorAll("#miyazaki th"),
+tablerows = document.querySelectorAll("#miyazaki th"),
+tablebody = document.querySelector("#miyazaki tbody");
+
+for(var i = 0; i < headers.length; i++) {
+  var current = headers[i];
+  headertext.push(current.textContent.replace(/\r?\n|\r/,""));
+} 
+for (var i = 0, row; row = tablebody.rows[i]; i++) {
+  for (var j = 0, col; col = row.cells[j]; j++) {
+    col.setAttribute("data-th", headertext[j]);
+  } 
+}
+
+</script>
+
+</div>
+</div>
+<br>
+<%= link_to 'New microcredit', new_microcredit_path %> 
+</body>
+
+
+
+
+
+
+ 
+<!-- 
+<h1>Listing microcredits</h1>
+
+<table>
+  <thead>
+    <tr>
+  
+      <th>Pogawenie</th>
+      <th>Goal</th>
+      <th>Obespechenie</th>
+      <th>Zaemcategory</th>
+      <th>Vozrast</th>
+      <th>Registration</th>
+      <th>Documents</th>
+      <th>Srokvid</th>
+      <th>Oformlen</th>
+      <th>Formavid</th>
+      <th>Poryadpogaw</th>
+      <th>Dosrpogaw</th>
+      <th>Paymethod</th>
+      <th>Site</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @microcredits.each do |microcredit| %>
+      <tr>
+      
+        <td><%= link_to 'Show', microcredit %></td>
+        <td><%= link_to 'Edit', edit_microcredit_path(microcredit) %></td>
+        <td><%= link_to 'Destroy', microcredit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br> -->
+ 

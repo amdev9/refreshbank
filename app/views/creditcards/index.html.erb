@@ -1,4 +1,9 @@
+ 
+<% content_for :titles do %>
 
+ <title>Поиск по кредитным картам онлайн | RefreshBank</title>
+
+ <%end%>
 <body id="products-page">
 
 
@@ -26,34 +31,16 @@
       <ul class="nav navbar-nav">
       
 
-    <!--     <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Screencasts <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a target="blank" href="https://itunes.apple.com/us/podcast/gorails-screencasts/id959332262">Subscribe With iTunes</a></li>
-            <li><a target="blank" href="http://feeds.feedburner.com/gorails">Subscribe With RSS</a></li>
-            <li class="divider">
-            </li><li><a href="/episodes">See All Episodes</a></li>
-          </ul>
-        </li> -->
+  
         <li><%= link_to 'Кредитные карты', creditcards_path %></li>
-      
-          <!-- <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guides <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li><a href="/guides/hourly-production-server-database-and-file-backups">Hourly Production Server Database And File Backups</a></li>
-                <li><a href="/guides/rotating-rails-production-logs-with-logrotate">Rotating Rails Production Logs with LogRotate</a></li>
-                <li><a href="/guides/setting-up-rails-4-with-mongodb-and-mongoid">Setting Up Rails 4 with MongoDB and Mongoid</a></li>
-                <li><a href="/guides/using-vagrant-for-rails-development">Using Vagrant for Rails Development</a></li>
-            </ul>
-          </li> -->
-
+      <li><%= link_to 'Микрокредиты и займы', microcredits_path %></li>
+       
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
        
-<li><a href="/users/sign_up">Регистрация</a></li>
-        <!--   <li><a href="/users/sign_up">Регистрация</a></li>
-          <li><a href="/users/sign_in">Вход</a></li> -->
+<li><a href="/">Регистрация</a></li>
+ 
       </ul>
     </nav>
   </div>
@@ -79,7 +66,7 @@
     </div>  
     <div class="filter">
       <label>Валюта:</label><br>
-     <%= select_tag 'currency', options_for_select(Creditcard.select(:currency).collect{ |u| [u.currency, u.currency] }.uniq)  %>
+     <%= select_tag 'currency', options_for_select(Creditcard.select(:currency).collect{ |u| [u.currency, u.currency] }.uniq) ,prompt: "РУБ"  %>
     </div> 
 
 
@@ -104,11 +91,11 @@
     <div class="filter">
       <label>Бонусы:</label><br>
      <%= select_tag 'bonus', options_for_select(Creditcard.select(:bonus).collect{ |u| [u.bonus, u.bonus] }.uniq), prompt: "Неважно" %>
-    </div>  -->
+    </div>  
     <div class="filter">
       <label>Подтверждение дохода:</label><br>
      <%= select_tag 'approveflag', options_for_select(Creditcard.select(:approveflag).collect{ |u| [u.approveflag, u.approveflag] }.uniq), prompt: "Неважно" %>
-    </div> 
+    </div> -->
 
 
   
@@ -126,7 +113,7 @@
     <label><input type="checkbox" name="freesms"> Бесплатные СМС</label> -->
 
       </div>
-
+<br><br><br><br><br>
 
 
 <!-- 
@@ -165,17 +152,17 @@
       </colgroup>
   <thead>
     <tr>
-      <th class="sorttable_alpha " rel="tooltip" title="Беглый взгляд на банк и ипотеки они предлагают" > Название & Тип карты</th>  
-      <th>Кредитный <br>лимит, РУБ</th>
+      <th class="sorttable_alpha " rel="tooltip" title="Название кредитной карты и банка" > Название & Тип карты</th>  
+      <th class="{sorter: 'digit'}" rel="tooltip" title="Нажмите для сортировки по кредитному лимиту">Кредитный <br>лимит</th>
      <!-- <th>Валюта</th>
      #  <th>Bank</th>
     #  <th>Categorycard</th>
-     -->  <th>Льготный <br>период</th>
+     -->  <th class="sorttable_alpha " rel="tooltip" title="В льготный период проценты за пользование денежными средствами не начисляются">Льготный <br>период</th>
     <!-- #  <th>Moneyusage</th>
     #  <th>Bonus</th>
       <th>Payapprove</th>--> 
-      <th>Ставка</th>
-      <th>Минимальный <br>платеж</th>
+      <th class="sorttable_alpha " rel="tooltip" title="Сортировка по ставке">Ставка</th>
+      <th class="{sorter: 'digit'}" rel="tooltip" title="Процент минимального платежа">Минимальный <br>платеж</th>
     <!-- #  <th>Interestbalance</th>
     #  <th>Cashback</th>
     #  <th>Freemade</th>
@@ -192,6 +179,7 @@
     <% @creditcards.each do |creditcard| %>
       <tr
             bank ="<%= creditcard.bank.gsub(/\s+/, "")    %>" categorycard="<%= creditcard.categorycard %>" currency="<%= creditcard.currency %>" freeperiod="<%= creditcard.freeperiod %>" creditlimit="<%= (creditcard.creditlimit.gsub(/\D/, '')  if creditcard.creditlimit.include? 'до') || (999999999 if creditcard.creditlimit.include? 'от')  %>" bonus = "<%= creditcard.bonus %>" moneyusage = "<%= creditcard.moneyusage %>" approveflag = "<%= creditcard.approveflag %>" interestbalance ="<%= creditcard.interestbalance %>" freemade ="<%= creditcard.freemade %>" cashback ="<%= creditcard.cashback %>" freeservice ="<%= creditcard.freeservice %>" freesms ="<%= creditcard.freesms %>" 
+
           >
         <td>
               
@@ -215,8 +203,8 @@
        # <td><%= creditcard.bonus %></td>
        <td><%= creditcard.payapprove %></td>
         --> 
-        <td><%= creditcard.stavka %></td>
-        <td><%= creditcard.minimalpay %></td>
+        <td><%= creditcard.stavka %>%</td>
+        <td><%= creditcard.minimalpay %>%</td>
      <!--  #  <td><%= creditcard.interestbalance %></td>
       #  <td><%= creditcard.cashback %></td>
       #  <td><%= creditcard.freemade %></td>
@@ -232,9 +220,7 @@
 
           <%= link_to 'Подробнее', creditcard, class: "btn btn-success btn-block" %>
 
-    <!--     <%= link_to 'Edit', edit_creditcard_path(creditcard) %>
-        <%= link_to 'Destroy', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %>
- -->
+   
         </td>
       </tr>
         
@@ -265,7 +251,10 @@ for (var i = 0, row; row = tablebody.rows[i]; i++) {
 </div>
 </div>
 <br>
-
 <%= link_to 'New Creditcard', new_creditcard_path %> 
- 
 </body>
+
+
+
+
+
