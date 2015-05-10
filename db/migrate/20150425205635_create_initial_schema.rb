@@ -1,7 +1,8 @@
 class CreateInitialSchema < ActiveRecord::Migration
 
     def change
-       
+       ActiveRecord::Schema.define(:version => 0) do  
+
   create_table "creditcards", force: :cascade do |t|
     t.string   "banktype"
     t.string   "creditlimit"
@@ -56,6 +57,7 @@ class CreateInitialSchema < ActiveRecord::Migration
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+    end
     end
 
    
