@@ -24,7 +24,7 @@ task :import_list => :environment do
 		   # page = agent.get("http://www.banki.ru/products/creditcards/search/") 
 
 		number = 1
-		while number < 3
+		while number < 16
 		  string = "http://www.banki.ru/products/creditcards/search/?page=" + number.to_s
 		  page = agent.get(string) 
 		  
