@@ -4,7 +4,7 @@ Rails.application.routes.draw do
    resources :creditcards , :only => [:index, :show]
     root :to => "microcredits#index"
    # ,  :path => '/'
-  :only => [:index, :show],
+  # :only => [:index, :show],
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
