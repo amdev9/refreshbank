@@ -69,6 +69,6 @@ class MicrocreditsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def microcredit_params
-      params.require(:microcredit).permit(:microtype, :minstavka, :maxsum, :maxsrok, :pogawenie, :goal, :obespechenie, :zaemcategory, :vozrast, :registration, :documents, :srokvid, :oformlen, :formavid, :poryadpogaw, :dosrpogaw, :paymethod, :site)
+      params.require(:microcredit).permit(:microcreditorg, :microtype, :minstavka, :maxsum, :maxsrok, :pogawenie, :goal, :obespechenie, :zaemcategory, :vozrast, :registration, :documents, :srokvid, :oformlen, :formavid, :poryadpogaw, :dosrpogaw, :paymethod, :image ,:site)
     end
 end

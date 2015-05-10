@@ -408,7 +408,9 @@ text-decoration: underline;
       top: -7px; }
   .head .product-logo {
     float: right;
-    height: 150px; }
+    /*height: 150px;*/
+    width: 260px;
+     }
 
 #products-page #filters {
   margin: 15px 30px 30px 30px;
@@ -581,7 +583,9 @@ text-decoration: underline;
       #products-page #products .product-table tbody tr td:first-child .bank-logo {
         margin-left: 5px;
         float: right;
-        width: 90px; }
+        /*width: 90px; */
+        height: 60px;
+      }
       #products-page #products .product-table tbody tr td:first-child a {
         font-size: 16px; }
     #products-page #products .product-table .monthly-payments {
