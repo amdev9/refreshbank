@@ -201,7 +201,7 @@ for (var i = 0, row; row = tablebody.rows[i]; i++) {
 </div>
 </div>
 <br>
-<%= link_to 'New microcredit', new_microcredit_path %> 
+ 
 </body>
 
 
@@ -209,43 +209,4 @@ for (var i = 0, row; row = tablebody.rows[i]; i++) {
 
 
 
- 
-<!-- 
-<h1>Listing microcredits</h1>
-
-<table>
-  <thead>
-    <tr>
   
-      <th>Pogawenie</th>
-      <th>Goal</th>
-      <th>Obespechenie</th>
-      <th>Zaemcategory</th>
-      <th>Vozrast</th>
-      <th>Registration</th>
-      <th>Documents</th>
-      <th>Srokvid</th>
-      <th>Oformlen</th>
-      <th>Formavid</th>
-      <th>Poryadpogaw</th>
-      <th>Dosrpogaw</th>
-      <th>Paymethod</th>
-      <th>Site</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @microcredits.each do |microcredit| %>
-      <tr>
-      
-        <td><%= link_to 'Show', microcredit %></td>
-        <td><%= link_to 'Edit', edit_microcredit_path(microcredit) %></td>
-        <td><%= link_to 'Destroy', microcredit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br> -->
- 
