@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  resources :microcredits  
-  # , :only => [:index, :show] 
+  resources :microcredits , :only => [:index, :show] 
 
-   resources :creditcards 
-   # , :only => [:index, :show]
+   resources :creditcards , :only => [:index, :show]
     root :to => "microcredits#index"
    # ,  :path => '/'
   # :only => [:index, :show],
