@@ -3,6 +3,11 @@ Rails.application.routes.draw do
 
    resources :creditcards , :only => [:index, :show]
     root :to => "microcredits#index"
+
+
+    get 'sitemap' => 'creditcards#sitemap'
+
+    
    # ,  :path => '/'
   # :only => [:index, :show],
   # The priority is based upon order of creation: first created -> highest priority.
