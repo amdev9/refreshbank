@@ -61,6 +61,14 @@ class CreditcardsController < ApplicationController
     end
   end
 
+   def sitemap
+  respond_to do |format|
+    format.xml { render file: 'public/sitemaps/sitemap.xml' }
+    format.html { redirect_to root_url }
+       end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_creditcard
@@ -72,11 +80,6 @@ class CreditcardsController < ApplicationController
       params.require(:creditcard).permit(:banktype, :creditlimit, :currency, :bank, :categorycard, :freeperiod, :moneyusage, :bonus, :payapprove, :stavka, :minimalpay, :interestbalance, :cashback, :freemade, :freeservice, :freesms, :description, :approveflag ,:awaylink, :site)
     end
      
-   def sitemap
-      respond_to do |format|
-    format.xml { render file: 'public/sitemaps/sitemap.xml' }
-    format.html { redirect_to root_url }
-  		end
-	end
+    
 
 end
