@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root :to => "microcredits#index"
 
 
-    get 'sitemap' => 'creditcards#sitemap'
+    # get 'sitemap' => 'creditcards#sitemap'
 
     
    # ,  :path => '/'
