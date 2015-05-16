@@ -219,7 +219,7 @@
       
       
  <td class="apply">
-        <%if creditcard.site != "" %>
+        <%if creditcard.site.include? "mastertarget"  %>
           <%= link_to 'Оформить', creditcard, class: "btn btn-success btn-block" %>
             
 <%else%>
