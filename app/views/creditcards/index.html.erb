@@ -218,7 +218,8 @@
 
       
       
- <td class="apply">
+   <td class="apply">
+        <%unless creditcard.nil? %>
         <%if creditcard.site.include? "mastertarget"  %>
           <%= link_to 'Оформить', creditcard, class: "btn btn-success btn-block" %>
             
@@ -226,7 +227,7 @@
     <%= link_to 'Подробнее', creditcard %>
 
             <%end%>
-   
+   <%end%>
         </td>
 
 

@@ -167,6 +167,7 @@
         <td><%= microcredit.site %></td> -->
 
        <td class="apply">
+        <%unless microcredit.nil? %>
         <%if microcredit.site.include? "mastertarget"  %>
           <%= link_to 'Оформить', microcredit, class: "btn btn-success btn-block" %>
             
@@ -174,7 +175,7 @@
     <%= link_to 'Подробнее', microcredit %>
 
             <%end%>
-   
+   <%end%>
         </td>
       </tr>
         
