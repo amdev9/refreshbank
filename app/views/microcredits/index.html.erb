@@ -166,10 +166,14 @@
         <td><%= microcredit.paymethod %></td>
         <td><%= microcredit.site %></td> -->
 
-        <td class="apply">
+       <td class="apply">
+        <%if microcredit.site != "" %>
+          <%= link_to 'Оформить', microcredit, class: "btn btn-success btn-block" %>
+            
+<%else%>
+    <%= link_to 'Подробнее', microcredit %>
 
-          <%= link_to 'Подробнее', microcredit, class: "btn btn-success btn-block" %>
-
+            <%end%>
    
         </td>
       </tr>

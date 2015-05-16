@@ -216,12 +216,20 @@
           <%= creditcard.awaylink %></td>
  -->
 
-        <td class="apply">
+      
+      
+ <td class="apply">
+        <%if creditcard.site != "" %>
+          <%= link_to 'Оформить', creditcard, class: "btn btn-success btn-block" %>
+            
+<%else%>
+    <%= link_to 'Подробнее', creditcard %>
 
-          <%= link_to 'Подробнее', creditcard, class: "btn btn-success btn-block" %>
-
+            <%end%>
    
         </td>
+
+
       </tr>
         
 
