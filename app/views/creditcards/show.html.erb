@@ -197,6 +197,7 @@
                 <div class="wrap">
 <h2>Онлайн заявка</h2>
 <p>Введите Ваш Email и мы вышлем Вам уведомление когда онлайн заявка будет доступна.</p>
+ <%unless @creditcard.site.nil? %>
   <%unless @creditcard.site.include? "mastertarget"  %>
                     <%= form_for @subscriber, :html => {:class => 'bank-contact-form'},  remote: true do |f|  %>
                   <div>
@@ -204,6 +205,7 @@
   </div>
        <%= f.submit 'Подтвердить' ,:class => "massive-button", type: "submit", style:"width:100%" %>
  <% end %>
+  <% end %>
             <% else %>
  <div id="request-callback">
                 <div class="wrap">
