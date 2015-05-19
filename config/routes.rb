@@ -4,6 +4,9 @@ Rails.application.routes.draw do
    resources :creditcards , :only => [:index, :show]
     root :to => "microcredits#index"
 
+   post 'microcredits/:id/subscribers/create' => 'subscribers#create' , as: :subscribers
+    post 'creditcards/:id/subscribers/create' => 'subscribers#create' 
+ 
 
     # get 'sitemap' => 'creditcards#sitemap'
 

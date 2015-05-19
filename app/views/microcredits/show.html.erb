@@ -149,22 +149,26 @@
     <p></p>
   </div>
 
+
 <div id="request-callback">
-            
+                <div class="wrap"> 
+<h2>Онлайн заявка</h2>
+<p>Введите Ваш Email и мы вышлем Вам уведомление когда онлайн заявка будет доступна.</p>
+  <%unless @microcredit.site.include? "mastertarget"  %>
+                    <%= form_for @subscriber, :html => {:class => 'bank-contact-form'},  remote: true do |f|  %>
+                  <div>
+                       <%= f.text_field :email, placeholder: 'Введите ваш Email'%>
+  </div>
+       <%= f.submit 'Подтвердить' ,:class => "massive-button", type: "submit", style:"width:100%" %>
+ <% end %>
+            <% else %>
+ <div id="request-callback">
                 <div class="wrap">
      <%= link_to 'Оформить заявку', @microcredit.site , class: "massive-button", style:"width:100%" %>
-        <!-- 
-            <form method="get" class="request-callback-form" action="#request-callback">
-                <input class="massive-button" type="submit" name="show_form" value="Оформить заявку" style="width:100%"></form>
-         -->
-    
+       <% end %>
 </div>
-
-
-     
-
-            
         </div>
+
  
 
 </div>

@@ -188,116 +188,34 @@
     <p></p>
    </div>
 
+
+
+
+
+
 <div id="request-callback">
-            
+                <div class="wrap">
+<h2>Онлайн заявка</h2>
+<p>Введите Ваш Email и мы вышлем Вам уведомление когда онлайн заявка будет доступна.</p>
+  <%unless @creditcard.site.include? "mastertarget"  %>
+                    <%= form_for @subscriber, :html => {:class => 'bank-contact-form'},  remote: true do |f|  %>
+                  <div>
+                       <%= f.text_field :email, placeholder: 'Введите ваш Email'%>
+  </div>
+       <%= f.submit 'Подтвердить' ,:class => "massive-button", type: "submit", style:"width:100%" %>
+ <% end %>
+            <% else %>
+ <div id="request-callback">
                 <div class="wrap">
      <%= link_to 'Оформить заявку', @creditcard.site , class: "massive-button", style:"width:100%" %>
-         
-    
+       <% end %>
 </div>
-
-
-
-     
-
-            
         </div>
 
-<!-- 
-<p>
-  <strong>Кредитный лимит:</strong>
-  <%= @creditcard.creditlimit %>
-</p>
-
-<p>
-  <strong>Currency:</strong>
-  <%= @creditcard.currency %>
-</p>
 
 
 
-<p>
-  <strong>Categorycard:</strong>
-  <%= @creditcard.categorycard %>
-</p>
 
-<p>
-  <strong>Freeperiod:</strong>
-  <%= @creditcard.freeperiod %>
-</p>
-
-<p>
-  <strong>Moneyusage:</strong>
-  <%= @creditcard.moneyusage %>
-</p>
-
-<p>
-  <strong>Bonus:</strong>
-  <%= @creditcard.bonus %>
-</p>
-
-<p>
-  <strong>Payapprove:</strong>
-  <%= @creditcard.payapprove %>
-</p>
-
-<p>
-  <strong>Stavka:</strong>
-  <%= @creditcard.stavka %>
-</p>
-
-<p>
-  <strong>Minimalpay:</strong>
-  <%= @creditcard.minimalpay %>
-</p>
-
-<p>
-  <strong>Interestbalance:</strong>
-  <%= @creditcard.interestbalance %>
-</p>
-
-<p>
-  <strong>Cashback:</strong>
-  <%= @creditcard.cashback %>
-</p>
-
-<p>
-  <strong>Freemade:</strong>
-  <%= @creditcard.freemade %>
-</p>
-
-<p>
-  <strong>Freeservice:</strong>
-  <%= @creditcard.freeservice %>
-</p>
-
-<p>
-  <strong>Freesms:</strong>
-  <%= @creditcard.freesms %>
-</p>
-
-
-<p>
-  <strong>Desctiption:</strong>
-  <%= @creditcard.description %>
-</p>
-
-<p>
-  <strong>desc:</strong>
-  <%= @creditcard.description %>
-</p>
-
-
-<p>
-  <strong>approveflag:</strong>
-  <%= @creditcard.approveflag %>
-</p>
-
-<p>
-  <strong>Awaylink:</strong>
-  <%= @creditcard.awaylink %>
-</p>
- -->
 
 </div>
  
