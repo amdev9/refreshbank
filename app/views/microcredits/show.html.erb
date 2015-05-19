@@ -151,8 +151,7 @@
 
 
 
- <%unless @microcredit.site.nil? %>
-  <%unless @microcredit.site.include? "mastertarget"  %>
+<%if  @microcredit.site.nil? == true %>
   <div id="request-callback">
                 <div class="wrap">
 <h2>Онлайн заявка</h2>
@@ -164,12 +163,15 @@
        <%= f.submit 'Подтвердить' ,:class => "massive-button", type: "submit", style:"width:100%" %>
  
   <% end %>
-            <% else %>
+ 
+
+            <% elsif  @microcredit.site.nil? == false and @microcredit.site != "" %>
+            
  <div id="request-callback">
                 <div class="wrap">
      <%= link_to 'Оформить заявку', @microcredit.site , class: "massive-button", style:"width:100%" %>
        <% end %>
-       <% end %>
+      
 </div>
         </div>
 
@@ -177,5 +179,6 @@
  
 
 </div>
-  
+  </div>
+
 </body>

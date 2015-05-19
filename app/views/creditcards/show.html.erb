@@ -191,10 +191,8 @@
 
 
 
+<%if @creditcard.site.nil? == true %>
 
-
- <%unless @creditcard.site.nil? %>
-  <%unless @creditcard.site.include? "mastertarget"  %>
   <div id="request-callback">
                 <div class="wrap">
 <h2>Онлайн заявка</h2>
@@ -206,12 +204,15 @@
        <%= f.submit 'Подтвердить' ,:class => "massive-button", type: "submit", style:"width:100%" %>
  
   <% end %>
-            <% else %>
+ 
+
+             <% elsif  @creditcard.site.nil? == false and @creditcard.site != "" %>
+            
  <div id="request-callback">
                 <div class="wrap">
      <%= link_to 'Оформить заявку', @creditcard.site , class: "massive-button", style:"width:100%" %>
        <% end %>
-       <% end %>
+      
 </div>
         </div>
 
@@ -221,7 +222,7 @@
 
 
 </div>
- 
+ </div>
  
 </body>
 
