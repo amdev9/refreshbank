@@ -10,6 +10,7 @@ class MicrocreditsController < ApplicationController
   # GET /microcredits/1
   # GET /microcredits/1.json
   def show
+    @subscriber = Subscriber.new
   end
 
   # GET /microcredits/new

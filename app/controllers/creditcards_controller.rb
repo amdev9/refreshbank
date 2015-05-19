@@ -10,6 +10,7 @@ class CreditcardsController < ApplicationController
   # GET /creditcards/1
   # GET /creditcards/1.json
   def show
+    @subscriber = Subscriber.new
   end
 
   # GET /creditcards/new
