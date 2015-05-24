@@ -7,8 +7,6 @@ class SubscribersController < ApplicationController
 
   def create
       @subscriber = Subscriber.new(subscriber_params)
-   
-
 
     if Subscriber.exists? email: @subscriber.email
     p "exists"
@@ -18,7 +16,8 @@ class SubscribersController < ApplicationController
 
 
       # Sends email to user when user is created.
-      # ExampleMailer.sample_email(@subscriber).deliver_now
+      ExampleMailer.sample_email(@subscriber).deliver_now
+      
       else
         p "notvalid"
          format.js { render :text => e.message, :status => 403 }
