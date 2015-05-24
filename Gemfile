@@ -38,6 +38,7 @@ gem 'dynamic_sitemaps'
 gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 gem 'figaro'
 #
+gem 'validates_email_format_of'
 
 
 # Use ActiveModel has_secure_password
