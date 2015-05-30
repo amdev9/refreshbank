@@ -39,8 +39,12 @@
 <div id="content-wrapper">
       
   <div class="head">
-   <img class="product-logo" src="<%= @microcredit.image %>" alt="Микрокредит <%= @microcredit.microtype %> в <%= @microcredit.microcreditorg %>">
+      <% if @microcredit.image != "" and @microcredit.image.nil? == false %>
 
+
+   <img class="product-logo" src="<%= @microcredit.image %>" alt="Микрокредит <%= @microcredit.microtype %> в <%= @microcredit.microcreditorg %>">
+   
+<%end%>
   <h1>
   <%= @microcredit.microtype %>
  

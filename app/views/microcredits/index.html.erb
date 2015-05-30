@@ -138,9 +138,12 @@
               
 
         <span class="wrap">
-                 
-                <img class="bank-logo" src="<%= microcredit.image %>" >
-                
+               
+          <% if microcredit.image != "" and microcredit.image.nil? == false %>
+
+                <img class="bank-logo" src="<%= microcredit.image %> " alt="Микрокредит <%= microcredit.microtype %> в <%= microcredit.microcreditorg %>">
+          <%end%>
+          
 
                 <%= link_to(microcredit) do %>
                  <span class="title"><%= microcredit.microtype %></span></a>
