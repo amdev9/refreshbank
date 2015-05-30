@@ -6,14 +6,7 @@
  <%end%>
 
 <body id="products-page">
-
-
-
  
-
-<!-- <p id="notice"><%= notice %></p>
- -->
-
  <header class="navbar navbar-default navbar-static-top" role="banner">
  
   <div class="container">
@@ -32,28 +25,10 @@
       <ul class="nav navbar-nav">
       
 
-    <!--     <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Screencasts <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a target="blank" href="https://itunes.apple.com/us/podcast/gorails-screencasts/id959332262">Subscribe With iTunes</a></li>
-            <li><a target="blank" href="http://feeds.feedburner.com/gorails">Subscribe With RSS</a></li>
-            <li class="divider">
-            </li><li><a href="/episodes">See All Episodes</a></li>
-          </ul>
-        </li> -->
         <li><%= link_to 'Кредитные карты', creditcards_path %></li>
         <li><%= link_to 'Микрокредиты и займы', microcredits_path %></li>
       
-      
-          <!-- <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guides <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li><a href="/guides/hourly-production-server-database-and-file-backups">Hourly Production Server Database And File Backups</a></li>
-                <li><a href="/guides/rotating-rails-production-logs-with-logrotate">Rotating Rails Production Logs with LogRotate</a></li>
-                <li><a href="/guides/setting-up-rails-4-with-mongodb-and-mongoid">Setting Up Rails 4 with MongoDB and Mongoid</a></li>
-                <li><a href="/guides/using-vagrant-for-rails-development">Using Vagrant for Rails Development</a></li>
-            </ul>
-          </li> -->
+       
 
         
       </ul>
@@ -62,8 +37,7 @@
 <li><a href="/">Регистрация</a></li>
 
 
-        <!--   <li><a href="/users/sign_up">Регистрация</a></li>
-          <li><a href="/users/sign_in">Вход</a></li> -->
+        
       </ul>
     </nav>
   </div>
@@ -93,7 +67,7 @@
             </a>
           </li>
           <li class="social-icons__li">
-            <a class="social-icons__a social-icons__vk" href="http://vkontakte.ru/share.php?url=http://www.refreshbank.ru/microcredits&title=refreshbank.ru&description=Поиск займов и микрокредитов онлайн" target="_blank">
+            <a class="social-icons__a social-icons__vk" href="http://vkontakte.ru/share.php?url=http://www.refreshbank.ru/microcredits&title=RefreshBank.ru" target="_blank">
               <i class="social-icons__icon fa fa-vk"></i>
             </a>
           </li>
@@ -118,16 +92,7 @@
      <%= select_tag 'pogawenie', options_for_select(Microcredit.select(:pogawenie).collect{ |u| [u.pogawenie, u.pogawenie.gsub(/\s+/, "").gsub(/,/, "")] }.uniq) ,prompt: "Неважно" %>
     </div>  
 
-
- <!--  
-    <div class="knobs">
-      <label><input type="checkbox" name="interestbalance"> Проценты на остаток</label>
  
-      &nbsp; &nbsp; &nbsp;
-      
-       <label><input type="checkbox" name="cashback"> Cash Back</label>
- </div> -->
-
 
 
      
@@ -183,21 +148,7 @@
         <td><%= microcredit.minstavka.gsub(/,/, ".") %></td>
         <td><%= microcredit.maxsum.gsub(/\s+/, "")%></td>
         <td><%= microcredit.maxsrok.gsub(/\D/, "") %></td>
-      <!--   <td><%= microcredit.pogawenie %></td>
-        <td><%= microcredit.goal %></td>
-        <td><%= microcredit.obespechenie %></td>
-        <td><%= microcredit.zaemcategory %></td>
-        <td><%= microcredit.vozrast %></td>
-        <td><%= microcredit.registration %></td>
-        <td><%= microcredit.documents %></td>
-        <td><%= microcredit.srokvid %></td>
-        <td><%= microcredit.oformlen %></td>
-        <td><%= microcredit.formavid %></td>
-        <td><%= microcredit.poryadpogaw %></td>
-        <td><%= microcredit.dosrpogaw %></td>
-        <td><%= microcredit.paymethod %></td>
-        <td><%= microcredit.site %></td> -->
-
+       
        <td class="apply">
         <%unless microcredit.site.nil? %>
         <%if microcredit.site.include? "mastertarget"  %>
