@@ -584,7 +584,7 @@ text-decoration: underline;
       #products-page #products .product-table tbody tr td:first-child .bank-logo {
         margin-left: 5px;
         float: right;
-        /*width: 90px; */
+        width: 140px;
         height: 60px;
       }
       #products-page #products .product-table tbody tr td:first-child a {
