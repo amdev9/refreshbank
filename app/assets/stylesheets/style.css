@@ -133,17 +133,33 @@ text-decoration: underline;
  
   }
 
-  .social-icons__facebook {
+
+
+
+  .social-icons__facebook:hover {
     background: #3c5b9b;
   }
-  .social-icons__twitter {
+  .social-icons__twitter:hover {
     background: #2eaae1;
   }
-  .social-icons__google {
+  .social-icons__google:hover {
     background: #f63e28;
   }
-  .social-icons__vk {
+  .social-icons__vk:hover {
     background: #5B7FA6;
+  }
+
+  .social-icons__facebook {
+    background: #d6d6d5;
+  }
+  .social-icons__twitter {
+    background: #d6d6d5;
+  }
+  .social-icons__google {
+    background: #d6d6d5;
+  }
+  .social-icons__vk {
+    background: #d6d6d5;
   }
 
 
