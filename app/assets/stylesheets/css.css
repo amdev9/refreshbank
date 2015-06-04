@@ -481,6 +481,19 @@ p {
     font-size: 87%
 }*/
 
+
+ul,
+ol {
+    margin-top: 0;
+    margin-bottom: 12px
+}
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+    margin-bottom: 0
+}
+
 .container {
     margin-right: auto;
     margin-left: auto;
