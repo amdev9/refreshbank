@@ -221,26 +221,13 @@
 </td>
         <td><%= creditcard.creditlimit %></td>
      
-       <!-- # <td><%= creditcard.bank %></td>
-       # <td><%= creditcard.categorycard %></td> -->
-        <td><%= creditcard.freeperiod %></td>
-      <!--  # <td><%= creditcard.moneyusage %></td>
-       # <td><%= creditcard.bonus %></td>
-       <td><%= creditcard.payapprove %></td>
-        --> 
+   
+       
+          <td><%if creditcard.freeperiod.to_i > 0 %><%= creditcard.freeperiod %><%else %>-<%end%></td>
+  
         <td><%= creditcard.stavka %>%</td>
-        <td><%= creditcard.minimalpay %>%</td>
-     <!--  #  <td><%= creditcard.interestbalance %></td>
-      #  <td><%= creditcard.cashback %></td>
-      #  <td><%= creditcard.freemade %></td>
-     #   <td><%= creditcard.freeservice %></td>
-    #    <td><%= creditcard.freesms %></td>
-      
-       <td><%= creditcard.approveflag %></td>
-       <td>
-          <%= creditcard.awaylink %></td>
- -->
-
+       
+       <td><%if creditcard.minimalpay.to_i > 0 %><%= creditcard.minimalpay %>%<%else %><%= creditcard.minimalpay %>  <%end%></td>
       
       
    <td class="apply">

@@ -73,13 +73,14 @@
       </colgroup>
       <tbody><tr>
         <td>
-          <em>до <%= @creditcard.freeperiod %> дней</em>
+          <em><%if @creditcard.freeperiod.to_i > 0 %>до <%= @creditcard.freeperiod %> дней<%else %>-<%end%></em>
           Льготный период
         </td>
         
-        <td>
+        
+       <td>
 
-          <em><%= @creditcard.minimalpay %>% <small> <%= @creditcard.currency %> </small></em>
+          <em><%= @creditcard.minimalpay %><% if @creditcard.minimalpay.to_i > 0 %>%<%end%> <small> <%= @creditcard.currency %> </small></em>
           Минимальный платеж
         </td>
       </tr>
