@@ -334,12 +334,10 @@ content: "\f099";
 
    
     #products-page #products .fixed {
-    width: calc(75% - 4px) ;
+      width: calc(75% - 3px) ;
 
-     width: -moz-calc(75% - 4px);
-    width: -webkit-calc(75% - 4px);
-  
-
+     width: -moz-calc(75% - 3px);
+    width: -webkit-calc(75% - 3px);
     }
 
     #products-page #products .product-table thead tr {
