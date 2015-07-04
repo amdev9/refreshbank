@@ -1,5 +1,14 @@
 /*ZAGRUZKA*/
 
+ .fixed{
+  top:0;
+  position:fixed;
+  
+  display:none;
+  border:none;
+}
+ 
+ 
 
 #nprogress {
     pointer-events: none

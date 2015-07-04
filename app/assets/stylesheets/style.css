@@ -331,6 +331,15 @@ content: "\f099";
     width: 100%;
     border-collapse: collapse;
     font-size: 18px; }
+
+   
+    #products-page #products .fixed {
+      width: calc(75% - 3px) ;
+
+     width: -moz-calc(75% - 3px);
+    width: -webkit-calc(75% - 3px);
+    }
+
     #products-page #products .product-table thead tr {
       border-bottom: 2px solid #c3c3c2;
       height: 40px; }
