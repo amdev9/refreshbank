@@ -13,6 +13,10 @@ sitemap :site do
   Creditcard.all.each do |creq|
     url creq
   end
+   url debitcards_url
+  Debitcard.all.each do |deb|
+    url deb
+  end
 
 end
 
