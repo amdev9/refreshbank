@@ -1,0 +1,211 @@
+ 
+<% content_for :titles do %>
+
+ <title>Дебетовая карта <%= @debitcard.typecard %> в <%= @debitcard.bank %> | RefreshBank</title>
+
+ <%end%>
+
+<body id="product-detail-page">
+
+
+ <header class="navbar navbar-default navbar-static-top" role="banner">
+ 
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <img title="RefreshBank" src="/img/logo2.svg" alt="RefreshBank займы онлайн">
+</a>    </div>
+
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Кредитные карты', debitcards_path %></li>
+        
+        <li><%= link_to 'Микрокредиты и займы', microcredits_path %></li>
+<li><%= link_to 'Дебетовые карты', debitcards_path %></li>
+
+      </ul>
+    <!--   <ul class="nav navbar-nav navbar-right">
+       
+<li><a href="/">Регистрация</a></li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+     
+
+ 
+<div id="content-wrapper">
+      
+  <div class="head">
+   <img class="product-logo" src="<%= @debitcard.bigimg %>" alt="Дебетовая карта <%= @debitcard.typecard %> в <%= @debitcard.bank %>">
+
+  <h1>
+  <%= @debitcard.typecard %>
+ 
+ <small><small>от </small> <%= @debitcard.bank %></small>
+
+
+
+
+  </h1>
+  <p>
+<%= link_to '<< Все дебетовые карты', debitcards_path %>
+</p>
+ 
+</div>
+
+
+<div class="left-content">
+    <table class="main-details-grid">
+      <colgroup>
+        <col span="1" style="width: 33.33333%">
+        <col span="1" style="width: 33.33333%">
+        <col span="1" style="width: 33.33333%">
+      </colgroup>
+      <tbody>
+<tr>
+ <td>
+          <em> 
+ <% if @debitcard.interestbalance != ""%>
+          <%=@debitcard.interestbalance%>%
+          
+          <%else%>-<%end%></em>
+         Проценты на остаток
+        </td>
+        <td>
+       
+
+       
+          <em> 
+
+          <%if @debitcard.yearpay.to_i >= 0%> 
+         <%=@debitcard.yearpay%> <%=@debitcard.currency%></em>
+        <%else%>
+ <%=@debitcard.yearpay%></em>
+
+        <%end%>
+         Годовое обслуживание
+        </td>
+        
+       
+
+      </tr>
+        <tr>
+
+ <td>
+ <em>  <% if @debitcard.cashback == true %> Есть <% else %> Нет <%end%></em>
+         Cash Back
+        </td>
+
+        
+       <td>
+          <em><%=@debitcard.currency%></em>
+         Валюта
+        </td>
+
+      </tr>
+    </tbody></table>
+    </div>
+
+
+
+<div class="details-on-the-side">
+    <table>
+      <tbody><tr>
+        <td>Банк</td>
+        <td><%= @debitcard.bank %></td>
+      </tr>
+      <tr>
+        <td>Категория карты</td>
+        <td><%= @debitcard.categorycard %></td>
+  
+
+    </tbody></table>
+
+     
+  </div>
+<div class="left-content">
+    <h3>Особенности</h3>
+    <p></p>
+
+   
+       <p><span style=\"line-height: 20.7999992370605px;\">
+ <% if @debitcard.techno.nil? == true or @debitcard.techno == "" %>
+   
+     <%else%>
+        <b>Технологические характеристики: </b>     <%= raw @debitcard.techno %>
+    <%end %>
+
+     
+
+ <% if @debitcard.interestbalance != ""%>
+  <br><b>Начисление процентов на остаток средств на счете:</b><%=@debitcard.interestbalance%>%<%else%><%end%>
+   <br><b>Выпуск и обслуживание:</b> <%=  @debitcard.createpaydetail %>
+    <% if @debitcard.cashdetail.nil? == true or @debitcard.cashdetail == "" %>
+   
+     <%else%>
+       <br><b>Cash Back:</b>  <%= @debitcard.cashdetail %>
+    <%end %>
+<br><b>Снятие наличных в банкоматах банка:</b> <%=  @debitcard.bankomatget %>
+<br><b>Снятие наличных в ПВН банка:</b> <%=  @debitcard.pvnget %>
+<br><b>Снятие наличных в банкоматах других банков:</b> <%=  @debitcard.otherbankomatget %>
+<br><b>Снятие наличных в ПВН других банков:</b> <%=  @debitcard.otherpvnget %>
+
+ <%if  @debitcard.lim != "" %>
+<br><b>Лимит по операциям:</b><%=@debitcard.lim  %>
+<%end%>
+ <%if  @debitcard.dopinfo != "" %>
+<br><b> Дополнительная информация:</b> <%=  @debitcard.dopinfo %>
+<%end%>
+<br><b>Возраст:</b> <%=  @debitcard.vozrast %>
+
+<br><b>Регистрация:</b> <%=  @debitcard.registration %>
+
+
+    <p></p>
+   </div>
+
+
+
+
+<%if @debitcard.site.nil? == true %>
+
+  <div id="request-callback">
+                <div class="wrap">
+<h2>Онлайн заявка</h2>
+<p>Введите Ваш Email и мы вышлем Вам уведомление когда онлайн заявка будет доступна.</p>
+                    <%= form_for @subscriber, :html => {:class => 'bank-contact-form'},  remote: true do |f|  %>
+                  <div>
+                       <%= f.text_field :email, placeholder: 'Введите ваш Email'%>
+  </div>
+       <%= f.submit 'Подтвердить' ,:class => "massive-button", type: "submit", style:"width:100%" %>
+ 
+  <% end %>
+ 
+
+             <% elsif  @debitcard.site.nil? == false and @debitcard.site != "" %>
+            
+ <div id="request-callback">
+                <div class="wrap">
+     <%= link_to 'Оформить заявку', @debitcard.img , class: "massive-button", style:"width:100%" %>
+       <% end %>
+      
+</div>
+        </div>
+
+
+
+
+
+
+</div>
+ </div>
+ 
+</body>
+

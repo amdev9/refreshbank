@@ -44,6 +44,34 @@ ActiveRecord::Schema.define(version: 20150404123740) do
     t.datetime "updated_at",      null: false
   end
 
+
+  create_table "debitcards", force: :cascade do |t|
+    t.string   "currency"
+    t.string   "typecard"
+    t.boolean  "cashback"
+    t.string   "interestbalance"
+    t.string   "createpay"
+    t.string   "createpaydetail"
+    t.string   "bankomatget"
+    t.string   "pvnget"
+    t.string   "otherbankomatget"
+    t.string   "otherpvnget"
+    t.string   "dopinfo"
+    t.string   "registration"
+    t.string   "techno"
+    t.string   "yearpay"
+    t.string   "bigimg"
+    t.string   "img"
+    t.string   "lim"
+    t.string   "categorycard"
+    t.string   "vozrast"
+    t.string   "bank"
+    t.string   "site"
+    t.string   "cashdetail"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+  
   create_table "microcredits", force: :cascade do |t|
     t.string   "microcreditorg"
     t.string   "microtype"

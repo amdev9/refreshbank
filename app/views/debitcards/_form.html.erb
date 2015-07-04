@@ -1,0 +1,65 @@
+<%= form_for(@debitcard) do |f| %>
+  <% if @debitcard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@debitcard.errors.count, "error") %> prohibited this debitcard from being saved:</h2>
+
+      <ul>
+      <% @debitcard.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :currency %><br>
+    <%= f.text_field :currency %>
+  </div>
+  <div class="field">
+    <%= f.label :typecard %><br>
+    <%= f.text_field :typecard %>
+  </div>
+  <div class="field">
+    <%= f.label :cashback %><br>
+    <%= f.check_box :cashback %>
+  </div>
+  <div class="field">
+    <%= f.label :interestbalance %><br>
+    <%= f.text_field :interestbalance %>
+  </div>
+  <div class="field">
+    <%= f.label :createpay %><br>
+    <%= f.text_field :createpay %>
+  </div>
+  <div class="field">
+    <%= f.label :bankomatget %><br>
+    <%= f.text_field :bankomatget %>
+  </div>
+  <div class="field">
+    <%= f.label :pvnget %><br>
+    <%= f.text_field :pvnget %>
+  </div>
+  <div class="field">
+    <%= f.label :otherbankomatget %><br>
+    <%= f.text_field :otherbankomatget %>
+  </div>
+  <div class="field">
+    <%= f.label :otherpvnget %><br>
+    <%= f.text_field :otherpvnget %>
+  </div>
+  <div class="field">
+    <%= f.label :dopinfo %><br>
+    <%= f.text_field :dopinfo %>
+  </div>
+  <div class="field">
+    <%= f.label :registration %><br>
+    <%= f.text_field :registration %>
+  </div>
+  <div class="field">
+    <%= f.label :techno %><br>
+    <%= f.text_field :techno %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
