@@ -8,10 +8,7 @@
 
 
 
- 
-
-<!-- <p id="notice"><%= notice %></p>
- -->
+  
 
  <header class="navbar navbar-default navbar-static-top" role="banner">
  
@@ -98,30 +95,9 @@
 
     <div class="filter">
       <label>Банки:</label><br>
-     <%= select_tag 'bank', options_for_select(Creditcard.select(:bank).collect{ |u| [u.bank, u.bank.gsub(/\s+/, "")] }.uniq) ,prompt: "Все" %>
+     <%= select_tag 'bank', options_for_select(Creditcard.select(:bank).collect{ |u| [u.bank, u.bank.gsub(/[^0-9A-Za-zа-я]+/, "")] }.uniq) ,prompt: "Все" %>
     </div> 
-   <!--  <div class="filter">
-      <label>Категория карты:</label><br>
-     <%= select_tag 'categorycard', options_for_select(Creditcard.select(:categorycard).collect{ |u| [u.categorycard, u.categorycard] }.uniq) %>
-    </div> 
- 
-    <div class="filter">
-      <label>Льготный период:</label><br>
-     <%= select_tag 'freeperiod', options_for_select(Creditcard.select(:freeperiod).collect{ |u| [u.freeperiod, u.freeperiod] }.uniq), prompt: "Неважно" %>
-    </div> 
-
-  <div class="filter">
-      <label>Использование средств:</label><br>
-     <%= select_tag 'moneyusage', options_for_select(Creditcard.select(:moneyusage).collect{ |u| [u.moneyusage, u.moneyusage] }.uniq), prompt: "Неважно" %>
-    </div> 
-    <div class="filter">
-      <label>Бонусы:</label><br>
-     <%= select_tag 'bonus', options_for_select(Creditcard.select(:bonus).collect{ |u| [u.bonus, u.bonus] }.uniq), prompt: "Неважно" %>
-    </div>  
-    <div class="filter">
-      <label>Подтверждение дохода:</label><br>
-     <%= select_tag 'approveflag', options_for_select(Creditcard.select(:approveflag).collect{ |u| [u.approveflag, u.approveflag] }.uniq), prompt: "Неважно" %>
-    </div> -->
+   
 
 
   
@@ -131,42 +107,11 @@
       &nbsp; &nbsp; &nbsp;
       
        <label><input type="checkbox" name="cashback"> Cash Back</label>
- <!-- 
-        <label><input type="checkbox" name="freemade"> Бесплатный выпуск карты</label>
-<br><br>
-   <label><input type="checkbox" name="freeservice"> Бесплатное обслуживание</label>
-<br><br>
-    <label><input type="checkbox" name="freesms"> Бесплатные СМС</label> -->
+  
 
       </div>
 <br><br><br><br><br>
-
-
-<!-- 
-<%= select("post", "person_id", Creditcard.select(:creditlimit).uniq.collect {|p| [ p.creditlimit, p.id ] }.uniq, {prompt: 'Select Person'}) %>
-
-<%= select("post", "person_id", Creditcard.select(:currency).uniq.collect {|p| [ p.currency, p.id ] }.uniq, {prompt: 'Select Person'}) %>
-
-<%= select("post", "person_id", Creditcard.select(:bank).uniq.collect {|p| [ p.bank, p.id ] }.uniq, {prompt: 'Select Person'}) %>
-
-<%= select("post", "person_id", Creditcard.select(:banktype).uniq.collect {|p| [ p.banktype, p.id ] }.uniq, {prompt: 'Select Person'}) %>
-
-
-
-<%= select("post", "person_id", Creditcard.select(:moneyusage).uniq.collect {|p| [ p.moneyusage, p.id ] }.uniq, {prompt: 'Select Person'}) %>
-
-<%= select("post", "person_id", Creditcard.select(:bonus).uniq.collect {|p| [ p.bonus, p.id ] }.uniq, {prompt: 'Select Person'}) %>
-
  
-<%= select("post", "person_id", Creditcard.select(:payapprove).uniq.collect {|p| [ p.payapprove, p.id ] }.uniq, {prompt: 'Select Person'}) %>
-
-
-    </div> 
-  <div class="knobs">
-<%= check_box_tag 'receive_email', 'yes', true %>
-  </div>
--->
-
 <p class="reset-filters">сброс фильтров</p>
 
 </div>
@@ -180,23 +125,11 @@
     <tr>
       <th class="sorttable_alpha " rel="tooltip" title="Название кредитной карты и банка" > Название & Тип карты</th>  
       <th class="{sorter: 'digit'}" rel="tooltip" title="Нажмите для сортировки по кредитному лимиту">Кредитный <br>лимит</th>
-     <!-- <th>Валюта</th>
-     #  <th>Bank</th>
-    #  <th>Categorycard</th>
-     -->  <th class="sorttable_alpha " rel="tooltip" title="В льготный период проценты за пользование денежными средствами не начисляются">Льготный <br>период</th>
-    <!-- #  <th>Moneyusage</th>
-    #  <th>Bonus</th>
-      <th>Payapprove</th>--> 
+    <th class="sorttable_alpha " rel="tooltip" title="В льготный период проценты за пользование денежными средствами не начисляются">Льготный <br>период</th>
+     
       <th class="sorttable_alpha " rel="tooltip" title="Сортировка по ставке">Ставка</th>
       <th class="{sorter: 'digit'}" rel="tooltip" title="Процент минимального платежа">Минимальный <br>платеж</th>
-    <!-- #  <th>Interestbalance</th>
-    #  <th>Cashback</th>
-    #  <th>Freemade</th>
-    #  <th>Freeservice</th>
-    #  <th>Freesms</th>
     
- <th>Подтверждение <br>дохода</th> -->  
- <!--  <th>link</th> -->
      <th colspan="3"></th>
     </tr>
   </thead>
@@ -204,7 +137,7 @@
   <tbody>
     <% @creditcards.each do |creditcard| %>
       <tr
-            bank ="<%= creditcard.bank.gsub(/\s+/, "")    %>" categorycard="<%= creditcard.categorycard %>" currency="<%= creditcard.currency %>" freeperiod="<%= creditcard.freeperiod %>" creditlimit="<%= (creditcard.creditlimit.gsub(/\D/, '')  if creditcard.creditlimit.include? 'до') || (999999999 if creditcard.creditlimit.include? 'от')  %>" bonus = "<%= creditcard.bonus %>" moneyusage = "<%= creditcard.moneyusage %>" approveflag = "<%= creditcard.approveflag %>" interestbalance ="<%= creditcard.interestbalance %>" freemade ="<%= creditcard.freemade %>" cashback ="<%= creditcard.cashback %>" freeservice ="<%= creditcard.freeservice %>" freesms ="<%= creditcard.freesms %>" 
+            bank ="<%= creditcard.bank.gsub(/[^0-9A-Za-zа-я]+/, "")    %>" categorycard="<%= creditcard.categorycard %>" currency="<%= creditcard.currency %>" freeperiod="<%= creditcard.freeperiod %>" creditlimit="<%= (creditcard.creditlimit.gsub(/\D/, '')  if creditcard.creditlimit.include? 'до') || (999999999 if creditcard.creditlimit.include? 'от')  %>" bonus = "<%= creditcard.bonus %>" moneyusage = "<%= creditcard.moneyusage %>" approveflag = "<%= creditcard.approveflag %>" interestbalance ="<%= creditcard.interestbalance %>" freemade ="<%= creditcard.freemade %>" cashback ="<%= creditcard.cashback %>" freeservice ="<%= creditcard.freeservice %>" freesms ="<%= creditcard.freesms %>" 
 
           >
         <td>
