@@ -4,6 +4,7 @@
  <title>Дебетовая карта <%= @debitcard.typecard %> в <%= @debitcard.bank %> | RefreshBank</title>
 
  <%end%>
+<% canonical (debitcard_url(@debitcard)) %>
 
   <body id="product-detail-page">
 
