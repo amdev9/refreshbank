@@ -153,7 +153,8 @@
 
 
          <td><%if debitcard.interestbalance == "" %>-<%else%> <%= debitcard.interestbalance %><%end%></td>
-         <td><%= debitcard.yearpay %></td>
+         <td><%if debitcard.yearpay.to_i >= 0%>
+         <%= debitcard.yearpay.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse %><%else%><%= debitcard.yearpay%><%end%></td>
          <td><% if debitcard.cashback == true %>есть<%else%>нет<%end%></td>
       
    <td class="apply">
