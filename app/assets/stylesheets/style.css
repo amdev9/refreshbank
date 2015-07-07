@@ -410,7 +410,7 @@ content: "\f099";
     #products-page #products .product-table .monthly-payments {
       display: none; }
     #products-page #products .product-table .apply {
-      background: #f5fbea; }
+     /* background: #f5fbea;*/ }
       #products-page #products .product-table .apply:hover {
         background: #ebf7d5; }
     #products-page #products .product-table .fixed_period {
