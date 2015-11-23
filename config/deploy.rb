@@ -5,7 +5,8 @@ require "capistrano-rbenv"
 set :rbenv_ruby, "2.2.2"
 # require "bundler/capistrano"
  
-server "176.58.116.29", roles: [:web, :app, :db], primary: true
+#server "176.58.116.29", roles: [:web, :app, :db], primary: true
+server "195.2.240.106", roles: [:web, :app, :db], primary: true
  
 set :application, 'refresh'
 set :repo_url, 'git@bitbucket.org:ratm92/refresh.git'
