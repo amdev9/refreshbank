@@ -140,8 +140,11 @@
 
   <tbody>
     <% @creditcards.each do |creditcard| %>
+    
       <tr
-            bank ="<%= creditcard.bank.gsub(/[^0-9A-Za-zа-я]+/, "")    %>" categorycard="<%= creditcard.categorycard %>" currency="<%= creditcard.currency %>" freeperiod="<%= creditcard.freeperiod %>" creditlimit="<%= (creditcard.creditlimit.gsub(/\D/, '')  if creditcard.creditlimit.include? 'до') || (999999999 if creditcard.creditlimit.include? 'от')  %>" bonus = "<%= creditcard.bonus %>" moneyusage = "<%= creditcard.moneyusage %>" approveflag = "<%= creditcard.approveflag %>" interestbalance ="<%= creditcard.interestbalance %>" freemade ="<%= creditcard.freemade %>" cashback ="<%= creditcard.cashback %>" freeservice ="<%= creditcard.freeservice %>" freesms ="<%= creditcard.freesms %>" 
+            bank ="<%= creditcard.bank.gsub(/[^0-9A-Za-zа-я]+/, "")    %>" categorycard="<%= creditcard.categorycard %>" currency="<%= creditcard.currency %>" freeperiod="<%= creditcard.freeperiod %>" 
+            creditlimit="<%= creditcard.creditlimit %>"
+             bonus = "<%= creditcard.bonus %>" moneyusage = "<%= creditcard.moneyusage %>" approveflag = "<%= creditcard.approveflag %>" interestbalance ="<%= creditcard.interestbalance %>" freemade ="<%= creditcard.freemade %>" cashback ="<%= creditcard.cashback %>" freeservice ="<%= creditcard.freeservice %>" freesms ="<%= creditcard.freesms %>" 
 
           >
         <td>

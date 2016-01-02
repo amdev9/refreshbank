@@ -17,11 +17,11 @@ task :debit => :environment do
 	
 	t = 0
 	global = 0
-	number = 1 #1
-	while number < 29
+	number = 1
+	while number < 33
 		string = "http://www.banki.ru/products/debitcards/search/?page=" + number.to_s
 		page = agent.get(string) 
-		agent.page.search(".font-bold").each do |item|
+		agent.page.search("#search-result .font-bold").each do |item|
 			hash[l] = { :typecard => item.text.strip,:id => l}
  	  		l = l + 1
  	   	end
@@ -50,9 +50,9 @@ task :debit => :environment do
 			k = k + 1
 			# SAVE
 		    if flg == 2
-		     	agent.get( image_name ).save "public/img/debit/small/#{bettername}.png" 
+		     	 agent.get( image_name ).save "public/img/debit/small/#{bettername}.png" 
 	    	elsif  flg == 1
-	    		 agent.get( image_name ).save "public/img/debit/small/#{bettername}.jpg" 
+	    		  agent.get( image_name ).save "public/img/debit/small/#{bettername}.jpg" 
 	    	end
 	    end
 	    page = agent.get(string) 
@@ -152,16 +152,21 @@ task :debit => :environment do
 				interestbal1 = clicked.search("tr:nth-child(4) th").map(&:text).map(&:strip)[0] 
 				interestbaltxt1 = clicked.search("tr:nth-child(4) td").map(&:text).map(&:strip)[0] 
 				
-				if interestbal1.include? "процентов на остаток"
-			 	 interestbaltxt1 = interestbaltxt1.scan(/(.*)%/)[0][0].gsub(/[^0-9,.]+/, '').gsub(/[,]/, '.') 
+				if interestbal1.nil? != true and interestbaltxt1.nil? != true and interestbal1.include? "процентов на остаток"
+			 	  # 
+			 	  # puts interestbaltxt1
+			 	  if interestbaltxt1.nil? != true  and interestbaltxt1 != '' and interestbaltxt1.scan(/(.*)%/).nil?  != true and interestbaltxt1.scan(/(.*)%/)[0].nil? != true
+			 	   interestbaltxt1 = interestbaltxt1.scan(/(.*)%/)[0][0].gsub(/[^0-9,.]+/, '').gsub(/[,]/, '.')
+
+			 	   end
 			 	 # puts interestbaltxt
 					 hash[t][:interestbalance] =  interestbaltxt1.strip 
-				elsif interestbal.include? "процентов на остаток"
+				elsif interestbal.nil? != true and  interestbal.include? "процентов на остаток"
 			 	 
 			 	 interestbaltxt = interestbaltxt.scan(/(.*)%/)[0][0].gsub(/[^0-9,.]+/, '').gsub(/[,]/, '.') 
 			 	 	 hash[t][:interestbalance] =  interestbaltxt.strip 
 			
-			elsif interestbal0.include? "процентов на остаток" 	 
+			elsif interestbal0.nil? != true and  interestbal0.include? "процентов на остаток" 	 
 			 	 interestbaltxt0 = interestbaltxt0.scan(/(.*)%/)[0][0].gsub(/[^0-9,.]+/, '').gsub(/[,]/, '.') 
 			 	 	 hash[t][:interestbalance] =  interestbaltxt0.strip 
 					
@@ -696,7 +701,7 @@ elsif nalvpvndrbankk4.nil? ==false  and nalvpvndrbankk4.include? "Снятие �
 			end
 			
 		end
-		sleep (2)
+		# sleep (1)
 	number = number+1
 	puts number
 	end

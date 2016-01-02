@@ -1,13 +1,12 @@
 
 desc "Import wish list"
 task :import_list => :environment do
+require 'rubygems'
+require 'open-uri'
+require 'mechanize'
 
 
-			require 'rubygems'
-		 
-		require 'open-uri'
-
-		 require 'mechanize'
+# <!--  creditlimit="<%= (creditcard.creditlimit.gsub(/\D/, '')  if creditcard.creditlimit.include? 'до') || (999999999 if creditcard.creditlimit.include? 'от')  %>" -->
 
 		 agent = Mechanize.new
 
@@ -24,7 +23,7 @@ task :import_list => :environment do
 		   # page = agent.get("http://www.banki.ru/products/creditcards/search/") 
 
 		number = 1
-		while number < 16
+		while number < 20
 		  string = "http://www.banki.ru/products/creditcards/search/?page=" + number.to_s
 		  page = agent.get(string) 
 		  
@@ -42,7 +41,7 @@ task :import_list => :environment do
 
 		   
 		    # SAVE
-		     agent.get( image_name ).save "public/img/#{bettername}.png" 
+		      agent.get( image_name ).save "public/img/#{bettername}.png" 
 		     end
 
 		   page = agent.get(string) 
@@ -103,9 +102,15 @@ navs = clicked.search(".js-tabs-view-item .tabs__content--frame tr:nth-child(5) 
 navsv = clicked.search(".js-tabs-view-item .tabs__content--frame tr:nth-child(5) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
 nalvbanksv = clicked.search(".js-tabs-view-item .tabs__content--frame tr:nth-child(6) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
 nalv =clicked.search("tr:nth-child(7) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
+
+if clicked.search("tr:nth-child(10) th").map(&:text).map(&:strip)[0].nil? != true 
 navs10 = clicked.search("tr:nth-child(10) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
+
 navs10v = clicked.search("tr:nth-child(10) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
 navs11 = clicked.search(".js-tabs-view-item .tabs__content--frame tr:nth-child(11) th").map(&:text).map(&:strip)[0]
+
+end
+
 if  nalvbanks.include? "Снятие наличных в банкоматах банка" then 
 	hash[t][:description] += "<br><b>Комиссия в банкоматах банка: </b>" + nalvbanksv
 elsif nal.include? "Снятие наличных в банкоматах банка" then 
@@ -160,13 +165,16 @@ end
 # # ----------------в пвн других банков
 pvndr0 = clicked.search("tr:nth-child(9) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
 pvndr0v = clicked.search("tr:nth-child(9) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
-pvndr1 = clicked.search("tr:nth-child(10) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
+if clicked.search("tr:nth-child(10) th").map(&:text).map(&:strip)[0].nil? != true
+pvndr1 = clicked.search("tr:nth-child(10) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ')
+
 pvndr1v = clicked.search("tr:nth-child(10) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
 pvndr12 = clicked.search("tr:nth-child(12) th").map(&:text).map(&:strip)[0] 
 pvndr7  = clicked.search("tr:nth-child(13) th").map(&:text).map(&:strip)[0] 
 pvndr14  = clicked.search("tr:nth-child(14) th").map(&:text).map(&:strip)[0] 
  pvndr8  = clicked.search("tr:nth-child(8) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
-  pvndr8v  = clicked.search("tr:nth-child(8) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
+  pvndr8v  = clicked.search("tr:nth-child(8) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ')
+
 if  pvndr0.include? "Снятие наличных в ПВН других банков" then hash[t][:description] += "<br><b>Комиссия в ПВН других банков: </b>"+ pvndr0v
 elsif pvndr1.include? "Снятие наличных в ПВН других банков" then hash[t][:description] += "<br><b>Комиссия в ПВН других банков: </b>"+ pvndr1v
 elsif  pvndr12.nil? ==false and pvndr12.include? "Комиссия в ПВН других банков"  then
@@ -181,9 +189,13 @@ elsif  pvndr7.nil? ==false and pvndr7.include? "Комиссия в ПВН др�
  elsif pvndr8.include? "Снятие наличных в ПВН других банков" then hash[t][:description] += "<br><b>Комиссия в ПВН других банков: </b>"+ pvndr8v
 end
 
+end  
+
 # ----------------лимиты по операциям
 # +-
 lim14 = clicked.search("tr:nth-child(14) th").map(&:text).map(&:strip)[0] 
+
+if lim0 = clicked.search("tr:nth-child(10) th").map(&:text).map(&:strip)[0].nil? != true
 lim0 = clicked.search("tr:nth-child(10) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
 lim0v = clicked.search("tr:nth-child(10) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
 lim1 = clicked.search("tr:nth-child(11) th").map(&:text).map(&:strip)[0] 
@@ -196,6 +208,7 @@ elsif  lim1.nil? ==false and lim1.include? "Лимиты по операциям
 elsif  lim14.nil? ==false and lim14.include? "Лимиты по операциям"  then
   	lim14 = lim14.gsub(/\s+/, ' ')  
 	 hash[t][:description] += "<br><b>Ограничения по операциям: </b>" + clicked.search("tr:nth-child(14) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
+end
 end
 # УСЛОВИЯ КРЕДИТОВАНИЯ
 kreditlimmm = clicked.search(".js-tabs-view-item:nth-child(2) tr:nth-child(1) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
@@ -241,6 +254,8 @@ end
  pogaw0 = clicked.search(".tabs__content--frame.js-tabs-view-item tr:nth-child(5) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
  pogaw0v = clicked.search(".tabs__content--frame.js-tabs-view-item tr:nth-child(5) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
 
+
+if clicked.search(".tabs__content--frame.js-tabs-view-item tr:nth-child(6) th").map(&:text).map(&:strip)[0].nil? != true 
  pogaw1 = clicked.search(".tabs__content--frame.js-tabs-view-item tr:nth-child(6) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
  pogaw1v = clicked.search(".tabs__content--frame.js-tabs-view-item tr:nth-child(6) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
  
@@ -249,35 +264,49 @@ end
 elsif pogaw1.include? "Погашение кредита" then hash[t][:description] += "<br><b>Погашение: </b>"+ pogaw1v
  
 end
+end
 
   
 
 
 # ТРЕБОВАНИЯ И ДОКУМЕНТЫ
 # # Возраст
+if clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(1) th").map(&:text).map(&:strip)[0].nil? != true and clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(1) td").map(&:text).map(&:strip)[0].nil? != true
 vozrast = clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(1) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
- vozrastv = clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(1) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
-  if  vozrast.include? "Возраст" 
+vozrastv = clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(1) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
+ 
+ end 
+  if vozrast.nil? != true and  vozrast.include? "Возраст" 
    hash[t][:description] += "<br><b>Возраст: </b>"+ vozrastv
 end
+
 # Подтверждение дохода
+
+if clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(2) th").map(&:text).map(&:strip)[0].nil? != true
 podtverg = clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(2) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
 podtvergv = clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(2) td").map(&:text).map(&:strip)[0].gsub(/\n/, 'br').gsub(/\s+/, ' ') 
-  if  podtverg.include? "Подтверждение дохода" 
+ end
+  if  podtverg.nil? != true and podtverg.include? "Подтверждение дохода" 
    hash[t][:description] += "<br><b>Подтверждение дохода: </b><small>"+ podtvergv.gsub(/(br )+/, '<br>') 
 end
 # регистрация
+if clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(3) th").map(&:text).map(&:strip)[0].nil? != true
+
 registr = clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(3) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
  registrv = clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(3) td").map(&:text).map(&:strip)[0].gsub(/\n/, 'br').gsub(/\s+/, ' ')
-
-  if  registr.include? "Регистрация" 
+end
+  if  registr.nil? != true and registr.include? "Регистрация" 
    hash[t][:description] += "</small><br><b>Регистрация: </b>" + registrv.gsub(/(br )+/, '<br>') 
    # puts registrv.gsub(/(br br )+/, '<br>').gsub(/<br>br/, '')
 end
 # # стаж работы fifififiif
+
+if clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(4) th").map(&:text).map(&:strip)[0].nil? != true 
+
 rabstag = clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(4) th").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ') 
  rabstagv = clicked.search(".tabs__content--frame+ .js-tabs-view-item .js-tab-section-title+ .standard-table--list tr:nth-child(4) td").map(&:text).map(&:strip)[0].gsub(/\s+/, ' ')
-  if  rabstag.include? "Стаж работы" 
+  end
+  if rabstag.nil? != true and  rabstag.include? "Стаж работы" 
    hash[t][:description] += "<br><b>Стаж работы: </b>" + rabstagv + " &nbsp;   </span></p>"
 end
 
@@ -397,8 +426,10 @@ minimal4 =  clicked.search(".tabs__content--frame.js-tabs-view-item tr:nth-child
 		   # # hash[t][:approveflag] = "#{approvedoks}"
 
 		#########000000000000000 Тип карты visa  и прочее
+		if    cardtype = clicked.search("tr:nth-child(1) .text-list--orange").map(&:text).map(&:strip)[0].nil? != true
 		   cardtype = clicked.search("tr:nth-child(1) .text-list--orange").map(&:text).map(&:strip)[0].gsub(/\n/, "/").gsub(/\s+/, " ")
 		        hash[t][:cardtype] = "#{cardtype}"
+		    end
 		# # 11111111111#######----------___CASHBACK___-------------------
 		 cashbackflag = clicked.search(".is-center+ .ui-columns__column").map(&:text).map(&:strip)[0].gsub(/\n/, "/").gsub(/\s+/, " ").include? "cash back"
 		       hash[t][:cashback] = "#{cashbackflag}"
@@ -418,7 +449,7 @@ minimal4 =  clicked.search(".tabs__content--frame.js-tabs-view-item tr:nth-child
 
 		###33333333#Название самой карты
 
-		agent.page.search(".font-bold").each do |item|
+		agent.page.search("#search-result .font-bold").each do |item|
 		 hash[i][:banktype] = "#{item.text.strip}"
 		 i = i + 1
 		 end
