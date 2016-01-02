@@ -8,6 +8,10 @@
  
 
 <% canonical (microcredit_url(@microcredit)) %>
+<% meta_tag :description, ('Сумма микрокредита: ' + @microcredit.summzaim.to_s + '. Ставка: ' +  @microcredit.stavkam.to_s   + '. Срок: ' + @microcredit.srokm.to_s  + '. Регистрация: ' + @microcredit.registration.to_s   + '. Форма выдачи: ' +  @microcredit.formavid.to_s  + '. Необходимые документы: '+ @microcredit.documents.to_s).split[0...30].join(' ')   %> 
+
+<% meta_tag :keywords, @microcredit.microtype.to_s + "," +  @microcredit.microcreditorg.to_s %>
+
 
 <body id="product-detail-page">
  

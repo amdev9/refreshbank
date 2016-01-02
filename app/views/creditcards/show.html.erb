@@ -7,13 +7,13 @@
  <%end%>
 
  <% canonical (creditcard_url(@creditcard)) %>
- 
+ <% meta_tag :description, strip_tags(@creditcard.description).split[0...30].join(' ') %>
+<% meta_tag :keywords, @creditcard.bank.to_s + "," +  @creditcard.banktype.to_s %>
+
+
 <body id="product-detail-page">
 
-
-<!-- <p id="notice"><%= notice %></p>
- -->
-
+ 
 
  <header class="navbar navbar-default navbar-static-top" role="banner">
  

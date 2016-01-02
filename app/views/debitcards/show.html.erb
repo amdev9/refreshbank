@@ -7,6 +7,9 @@
 
  <%end%>
 <% canonical (debitcard_url(@debitcard)) %>
+ <% meta_tag :description, ('Начисление процентов на остаток средств на счете: ' + @debitcard.interestbalance.to_s  +
+   '%. Выпуск и обслуживание:'+ @debitcard.createpaydetail.to_s  + ' '+ 'Cash Back:' + @debitcard.cashdetail.to_s).split[0...30].join(' ')  %>
+<% meta_tag :keywords, @debitcard.bank.to_s + "," +  @debitcard.typecard.to_s %>
 
   <body id="product-detail-page">
 
@@ -33,10 +36,7 @@
 <li><%= link_to 'Дебетовые карты', debitcards_path %></li>
 
       </ul>
-    <!--   <ul class="nav navbar-nav navbar-right">
-       
-<li><a href="/">Регистрация</a></li>
-      </ul> -->
+    
     </nav>
   </div>
 </header>
