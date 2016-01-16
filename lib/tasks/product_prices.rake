@@ -65,7 +65,7 @@ require 'mechanize'
 
 	   	  
 	# SAVE
-	   	  agent.get( bigname ).save "public/img/big/#{cleanbig}.png" 
+	   	  # agent.get( bigname ).save "public/img/big/#{cleanbig}.png" 
 			end
 	   end
 
