@@ -622,85 +622,85 @@ elsif nalvpvndrbankk4.nil? ==false  and nalvpvndrbankk4.include? "Снятие �
 		end
 
 
-		page = agent.get(string)
-		page.links_with(:href => %r{/products/debitcards/card/} ).each do |link|
-			if link.text.strip != ''
-				# puts link.text.strip
+		# page = agent.get(string)
+		# page.links_with(:href => %r{/products/debitcards/card/} ).each do |link|
+		# 	if link.text.strip != ''
+		# 		# puts link.text.strip
 				
-				# if Debitcard.where(:typecard => hash[global][:typecard], 
-			 #  	:bank => hash[global][:bank]).blank?
-				deb = Debitcard.where(
-			  	:typecard => hash[global][:typecard], 
-			  	:bank => hash[global][:bank] ).first_or_initialize	
-			    unless deb.nil?
+		# 		# if Debitcard.where(:typecard => hash[global][:typecard], 
+		# 	 #  	:bank => hash[global][:bank]).blank?
+		# 		deb = Debitcard.where(
+		# 	  	:typecard => hash[global][:typecard], 
+		# 	  	:bank => hash[global][:bank] ).first_or_initialize	
+		# 	    unless deb.nil?
 
-					deb.update_attributes! (
+		# 			deb.update_attributes! (
 
-						{:typecard => hash[global][:typecard] ,
+		# 				{:typecard => hash[global][:typecard] ,
 						 
-									:createpaydetail => hash[global][:createpaydetail] ,
-								:yearpay => hash[global][:yearpay] ,
-							  :bank => hash[global][:bank],
+		# 							:createpaydetail => hash[global][:createpaydetail] ,
+		# 						:yearpay => hash[global][:yearpay] ,
+		# 					  :bank => hash[global][:bank],
 
-								  :dopinfo => hash[global][:dopinfo],  
-								  :interestbalance => hash[global][:interestbalance],
-								  :bigimg => hash[global][:bigimg] ,
+		# 						  :dopinfo => hash[global][:dopinfo],  
+		# 						  :interestbalance => hash[global][:interestbalance],
+		# 						  :bigimg => hash[global][:bigimg] ,
 								
-								:img => hash[global][:img],
-								:registration => hash[global][:registration],
-								:vozrast => hash[global][:vozrast],
- 								:bankomatget => hash[global][:nalvpvnbank1],
-								  :pvnget => hash[global][:nalvpvnbank],
-								  :cashback => hash[global][:cashback] ,
-								      :techno => hash[global][:techno], 
-								      			:categorycard => hash[global][:cardtype] ,
-								 :otherpvnget=> hash[global][:nalvpvndrbank2],
-								  :cashdetail=> hash[global][:cashdetail],
+		# 						:img => hash[global][:img],
+		# 						:registration => hash[global][:registration],
+		# 						:vozrast => hash[global][:vozrast],
+ 	# 							:bankomatget => hash[global][:nalvpvnbank1],
+		# 						  :pvnget => hash[global][:nalvpvnbank],
+		# 						  :cashback => hash[global][:cashback] ,
+		# 						      :techno => hash[global][:techno], 
+		# 						      			:categorycard => hash[global][:cardtype] ,
+		# 						 :otherpvnget=> hash[global][:nalvpvndrbank2],
+		# 						  :cashdetail=> hash[global][:cashdetail],
 
-								  :lim => hash[global][:lim] ,
+		# 						  :lim => hash[global][:lim] ,
 					 
-								  :currency=> "РУБ",
-								  # hash[global][:currency],
-								 :otherbankomatget => hash[global][:nalvpvndrbank]
-						})
-				else
-					Debitcard.create!(:typecard => hash[global][:typecard] ,
-						:categorycard => hash[global][:cardtype] ,
-					 :lim => hash[global][:lim] ,
+		# 						  :currency=> "РУБ",
+		# 						  # hash[global][:currency],
+		# 						 :otherbankomatget => hash[global][:nalvpvndrbank]
+		# 				})
+		# 		else
+		# 			Debitcard.create!(:typecard => hash[global][:typecard] ,
+		# 				:categorycard => hash[global][:cardtype] ,
+		# 			 :lim => hash[global][:lim] ,
 					 
-							:createpaydetail => hash[global][:createpaydetail] ,
-					:cashback => hash[global][:cashback] ,
-							  :dopinfo => hash[global][:dopinfo],  
-							    :techno => hash[global][:techno], 
-							  :interestbalance => hash[global][:interestbalance],
-							   :bigimg => hash[global][:bigimg] ,
-							   	:yearpay => hash[global][:yearpay] ,
-							:img => hash[global][:img],
-							:registration =>hash[global][:registration],
+		# 					:createpaydetail => hash[global][:createpaydetail] ,
+		# 			:cashback => hash[global][:cashback] ,
+		# 					  :dopinfo => hash[global][:dopinfo],  
+		# 					    :techno => hash[global][:techno], 
+		# 					  :interestbalance => hash[global][:interestbalance],
+		# 					   :bigimg => hash[global][:bigimg] ,
+		# 					   	:yearpay => hash[global][:yearpay] ,
+		# 					:img => hash[global][:img],
+		# 					:registration =>hash[global][:registration],
 
-							  :vozrast => hash[global][:vozrast],
-								:bankomatget => hash[global][:nalvpvnbank1],
-							  :pvnget => hash[global][:nalvpvnbank],
-							  :bank => hash[global][:bank],
-
-
-								  :currency=> "РУБ",
-
-								 :otherpvnget=> hash[global][:nalvpvndrbank2],
-	 :cashdetail=> hash[global][:cashdetail],
+		# 					  :vozrast => hash[global][:vozrast],
+		# 						:bankomatget => hash[global][:nalvpvnbank1],
+		# 					  :pvnget => hash[global][:nalvpvnbank],
+		# 					  :bank => hash[global][:bank],
 
 
-							  :otherbankomatget => hash[global][:nalvpvndrbank]
+		# 						  :currency=> "РУБ",
 
-							  )
+		# 						 :otherpvnget=> hash[global][:nalvpvndrbank2],
+	 # :cashdetail=> hash[global][:cashdetail],
+
+
+		# 					  :otherbankomatget => hash[global][:nalvpvndrbank]
+
+		# 					  )
 		 
-				end
+		# 		end
 			 
 	 
-				global = global + 1
-			end
+		# 		global = global + 1
+		# 	end
 			
-		end
+		#end
 		# sleep (1)
 	number = number+1
 	puts number

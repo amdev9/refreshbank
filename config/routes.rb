@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  resources :microcredits  , :only => [:index, :show] 
+ # match 'debitcards/:id', constraints: { id: /(29[0-3]|2[0-8][0-9]|1[0-9]{2}|[1-9][0-9]?)/ }, :to => redirect('/debitcards')
+ # match 'creditcards/:id', constraints: { id: /([3-9][0-9]{2}|2[5-9][0-9]|24[2-9])/ }, :to => redirect('/creditcards')
+ # match 'microcredits/:id', constraints: { id: /([4-9][0-9]|3[6-9])/ }, :to => redirect('/microcredits')
+   
 
+  resources :microcredits  , :only => [:index, :show] 
    resources :creditcards , :only => [:index, :show]
     resources :debitcards , :only => [:index, :show]
 

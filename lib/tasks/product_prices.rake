@@ -495,27 +495,27 @@ minimal4 =  clicked.search(".tabs__content--frame.js-tabs-view-item tr:nth-child
 		#-------------
 
 
-		page = agent.get(string)
-		page.links_with(:href => %r{/products/creditcards/card/} ).each do |link|
-			 		if link.text.strip != ''
+		# page = agent.get(string)
+		# page.links_with(:href => %r{/products/creditcards/card/} ).each do |link|
+		# 	 		if link.text.strip != ''
 			 			 
-    Creditcard.create!(:freesms => hash[global][:sms] ,:freemade => hash[global][:cheto] , 
-    	:moneyusage => hash[global][:moneyusage] ,:categorycard => hash[global][:cardtype], :minimalpay => hash[global][:minimalpay]  ,
+  #   Creditcard.create!(:freesms => hash[global][:sms] ,:freemade => hash[global][:cheto] , 
+  #   	:moneyusage => hash[global][:moneyusage] ,:categorycard => hash[global][:cardtype], :minimalpay => hash[global][:minimalpay]  ,
 
-     :image_full => hash[global][:bigimg] ,
-      :cashback => hash[global][:cashback] ,
-      :stavka => hash[global][:stavka],
-       :creditlimit => hash[global][:creditlimit],
-        :freeperiod =>  hash[global][:freeperiod],
-         :bank => hash[global][:bank] ,
-         :banktype => hash[global][:banktype],
-          :interestbalance => hash[global][:interestbalance], 
-          :image_preview => hash[global][:img],
-          :description => hash[global][:description] )
+  #    :image_full => hash[global][:bigimg] ,
+  #     :cashback => hash[global][:cashback] ,
+  #     :stavka => hash[global][:stavka],
+  #      :creditlimit => hash[global][:creditlimit],
+  #       :freeperiod =>  hash[global][:freeperiod],
+  #        :bank => hash[global][:bank] ,
+  #        :banktype => hash[global][:banktype],
+  #         :interestbalance => hash[global][:interestbalance], 
+  #         :image_preview => hash[global][:img],
+  #         :description => hash[global][:description] )
     
-			 	global = global + 1
-		end
-		end
+		# 	 	global = global + 1
+		# end
+		# end
 
 
 
