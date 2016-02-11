@@ -30,10 +30,10 @@ class MicrocreditsController < ApplicationController
     respond_to do |format|
       if @microcredit.save
         format.html { redirect_to @microcredit, notice: 'Microcredit was successfully created.' }
-        format.json { render :show, status: :created, location: @microcredit }
+        # format.json { render :show, status: :created, location: @microcredit }
       else
         format.html { render :new }
-        format.json { render json: @microcredit.errors, status: :unprocessable_entity }
+        # format.json { render json: @microcredit.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,10 +44,10 @@ class MicrocreditsController < ApplicationController
     respond_to do |format|
       if @microcredit.update(microcredit_params)
         format.html { redirect_to @microcredit, notice: 'Microcredit was successfully updated.' }
-        format.json { render :show, status: :ok, location: @microcredit }
+        # format.json { render :show, status: :ok, location: @microcredit }
       else
         format.html { render :edit }
-        format.json { render json: @microcredit.errors, status: :unprocessable_entity }
+        # format.json { render json: @microcredit.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,7 +58,7 @@ class MicrocreditsController < ApplicationController
     @microcredit.destroy
     respond_to do |format|
       format.html { redirect_to microcredits_url, notice: 'Microcredit was successfully destroyed.' }
-      format.json { head :no_content }
+      # format.json { head :no_content }
     end
   end
 

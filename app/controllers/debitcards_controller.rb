@@ -30,10 +30,10 @@ class DebitcardsController < ApplicationController
     respond_to do |format|
       if @debitcard.save
         format.html { redirect_to @debitcard, notice: 'Debitcard was successfully created.' }
-        format.json { render :show, status: :created, location: @debitcard }
+        # format.json { render :show, status: :created, location: @debitcard }
       else
         format.html { render :new }
-        format.json { render json: @debitcard.errors, status: :unprocessable_entity }
+        # format.json { render json: @debitcard.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,10 +44,10 @@ class DebitcardsController < ApplicationController
     respond_to do |format|
       if @debitcard.update(debitcard_params)
         format.html { redirect_to @debitcard, notice: 'Debitcard was successfully updated.' }
-        format.json { render :show, status: :ok, location: @debitcard }
+        # format.json { render :show, status: :ok, location: @debitcard }
       else
         format.html { render :edit }
-        format.json { render json: @debitcard.errors, status: :unprocessable_entity }
+        # format.json { render json: @debitcard.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,7 +58,7 @@ class DebitcardsController < ApplicationController
     @debitcard.destroy
     respond_to do |format|
       format.html { redirect_to debitcards_url, notice: 'Debitcard was successfully destroyed.' }
-      format.json { head :no_content }
+      # format.json { head :no_content }
     end
   end
 
