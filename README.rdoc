@@ -1,8 +1,8 @@
-##Search by credit cards view
+Search by credit cards view  
 
 https://refreshbank.github.io/img/portfolio/roundicons-free.png
 
-##Credit cards filter  
+Credit cards filter  
 
 https://refreshbank.github.io/img/portfolio/startup-framework-preview.png   
 
